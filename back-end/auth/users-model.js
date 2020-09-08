@@ -7,11 +7,11 @@ module.exports = {
 }
 
 function findById(id){
-    return db('users').where({ id }).first().select('id', 'username')
+    return db('users').where({ id }).first().select('id','username')
 }
 
 async function register(userInfo){
-    const userIds = db('users').insert(userInfo)
+    const userIds = await db('users').insert(userInfo)
     return findById(userIds[0])
 }
 
