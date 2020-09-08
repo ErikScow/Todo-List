@@ -27,14 +27,26 @@ function authenticate(req, res, next){
 }
 
 async function isUnique(req, res, next){
-    const username = req.body.username
-    const usernameTaken = await db.findByUsername(username)
 
-    if (usernameTaken){
+    const username = req.body.username
+    const id = parseInt(req.params.id)
+    const dbUser = await db.findByUsername(username)
+
+    if (req.method === "PUT"){
+        if (dbUser && dbUser.id === id){
+            next()
+        } else if (dbUser){
+            res.status(400).json({ message: "username taken here"})
+        } else {
+            next()
+        }
+    } else if (dbUser){
         res.status(400).json({ message: "username taken"})
     } else {
         next()
     }
+    
+ 
 }
 
 async function validateUser(req, res, next) {

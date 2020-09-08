@@ -25,8 +25,7 @@ async function update(newInfo, id){
     const original = await findById(id)
     const updated = { ...original, ...newInfo }
     await db('users').where({ id }).update(updated)
-    const newUser = await findById(id)
-    return newUser
+    return findById(id)
 }
 
 async function remove(id){
