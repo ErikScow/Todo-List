@@ -14,7 +14,6 @@ function authenticate(req, res, next){
 
     if (token){
         jwt.verify(token, secrets.jwtSecret, (err, decodedToken) => {
-            console.log('decoded token: ', decodedToken)
             if (err){
                 res.status(401).json({ message: 'invalid token' })
             } else {
@@ -48,7 +47,7 @@ async function validateUser(req, res, next) {
 }
 
 async function validateId(req, res, next){
-    const id  = req.params.id
+    const { id }  = req.params
         
     try{
         const exists = await db.findById(id)

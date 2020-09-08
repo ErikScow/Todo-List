@@ -1,14 +1,14 @@
 const express = require('express')
-
 const router = express.Router()
 
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-
 const secrets = require('../config/secrets')
-const users = require('./users-model')
 
-router.post('/register', async (req, res) => {
+const users = require('./users-model')
+const { isUnique, validateId, validateUser, authenticate } = require('./users-middleware')
+
+router.post('/register', validateUser, isUnique, async (req, res) => {
     const newUserInfo = req.body
 
     hash = bcrypt.hashSync(newUserInfo.password, 12)
@@ -43,9 +43,31 @@ router.post('/login', async (req, res) => {
         console.log(err)
         res.status(500).json({ message: 'could not login to database'})
     }
+})
 
-    
-    
+router.put('/:id', authenticate, validateId, isUnique, validateUser, async (req, res) => {
+    const userInfo = req.body
+    const { id } = req.params
+
+    try{
+        const updatedUser = await users.update(userInfo, id)
+        res.status(200).json({ updated: updatedUser })
+    } catch (err){
+        console.log(err)
+        res.status(500).json({ message: 'could not update user'})
+    }
+})
+
+router.delete('/:id', authenticate, validateId, async (req, res) => {
+    const { id } = req.params
+
+    try{
+        const deleted = await users.remove(id)
+        res.status(200).json({ deleted: deleted })
+    } catch (err){
+        console.log(err)
+        res.status(500).json({ message: 'could not delete user'})
+    }
 })
 
 function generateToken(user){

@@ -2,7 +2,7 @@ const express = require('express')
 
 require('dotenv').config()
 const server = express()
-const userRouter = require('./auth/users-router')
+const userRouter = require('./users/users-router')
 
 server.use(express.json())
 server.use('/api/users', userRouter)

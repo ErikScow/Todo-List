@@ -115,5 +115,7 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+.env
+
 # database file is not commited to prevent merge conflicts
 data/db_file.db3
