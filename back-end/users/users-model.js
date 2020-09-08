@@ -29,7 +29,7 @@ async function update(newInfo, id){
 }
 
 async function remove(id){
-    const userInfo = await findById(id)
+    const deleted = await findById(id)
     await db('users').where({ id }).del()
-    return userInfo
+    return deleted
 }
