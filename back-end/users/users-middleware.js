@@ -1,4 +1,4 @@
-const db = require('./users-model')
+const users = require('./users-model')
 const jwt = require('jsonwebtoken')
 const secrets = require('../config/secrets')
 
@@ -10,27 +10,35 @@ module.exports = {
 }
 
 function authenticate(req, res, next){
-    const [authType, token] = req.headers.authorization.split(" ")
+    const id = parseInt(req.params.id)
 
-    if (token){
-        jwt.verify(token, secrets.jwtSecret, (err, decodedToken) => {
-            if (err){
-                res.status(401).json({ message: 'invalid token' })
-            } else {
-                req.decodedToken = decodedToken
-                next()
-            }
-        })
+    if(req.headers.authorization){
+        const [authType, token] = req.headers.authorization.split(" ")
+        if (token){
+            jwt.verify(token, secrets.jwtSecret, (err, decodedToken) => {
+                if (err){
+                    res.status(401).json({ message: 'invalid token' })
+                } else if (decodedToken.userId === id){
+                    req.decodedToken = decodedToken
+                    next()
+                } else {
+                    res.status(403).json({ message: 'you dont have access to this'})
+                } 
+            })
+        } else {
+            res.status(401).json({ message: 'no token included in authorization header' })
+        }
     } else {
-        res.status(401).json({ message: 'no token included' })
+        res.status(401).json({ message: 'no authorization header included'})
     }
+   
 }
 
 async function isUnique(req, res, next){
 
     const username = req.body.username
     const id = parseInt(req.params.id)
-    const dbUser = await db.findByUsername(username)
+    const dbUser = await users.findByUsername(username)
 
     if (req.method === "PUT"){
         if (dbUser && dbUser.id === id){
@@ -49,7 +57,8 @@ async function isUnique(req, res, next){
  
 }
 
-async function validateUser(req, res, next) {
+function validateUser(req, res, next){
+
     const { username, password } = req.body
     if (username, password){
         next()
@@ -62,7 +71,7 @@ async function validateId(req, res, next){
     const { id }  = req.params
         
     try{
-        const exists = await db.findById(id)
+        const exists = await users.findById(id)
         if (exists){
             next()
         } else {

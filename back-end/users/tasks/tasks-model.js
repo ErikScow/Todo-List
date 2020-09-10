@@ -1,6 +1,7 @@
 const db = require('../../data/db-config')
 
 module.exports = {
+    findById,
     findByUserId,
     add,
     update,
@@ -8,7 +9,7 @@ module.exports = {
 }
 
 function findById(id){
-    return db('tasks').where({ id }).first()
+    return db('tasks').where({ id}).first()
 }
 
 function findByUserId(userId){

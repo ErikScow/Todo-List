@@ -9,7 +9,7 @@ const users = require('./users-model')
 const { isUnique, validateId, validateUser, authenticate } = require('./users-middleware')
 
 const tasksRouter = require('./tasks/tasks-router')
-router.use('/:id/tasks', tasksRouter)
+router.use('/:id/tasks', authenticate, validateId, tasksRouter)
 
 router.post('/register', validateUser, isUnique, async (req, res) => {
     const newUserInfo = req.body
@@ -50,7 +50,7 @@ router.post('/login', async (req, res) => {
 
 router.put('/:id', authenticate, isUnique, validateId, validateUser, async (req, res) => {
     const userInfo = req.body
-    const { id } = req.params
+    const id  = req.params.id
 
     try{
         const updatedUser = await users.update(userInfo, id)
