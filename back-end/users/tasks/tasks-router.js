@@ -4,6 +4,9 @@ const router = express.Router({ mergeParams: true })
 const tasks = require('./tasks-model')
 const { validateTask, validateId } = require('./tasks-middleware')
 
+const subTaskRouter = require('./sub-tasks-1/sub-task-router')
+router.use('/:taskId/subTasks', subTaskRouter)
+
 router.get('/', async (req, res) => {
     const { id } = req.params
 

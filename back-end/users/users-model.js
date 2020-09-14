@@ -33,3 +33,12 @@ async function remove(id){
     await db('users').where({ id }).del()
     return deleted
 }
+
+async function findUserInfo(username){
+    const user = await db('users').where({ username }).select('id', 'username', 'theme')
+    const userTasks = await db('tasks').where({ user_id: user.id })
+    return {
+        user: user,
+        tasks: userTasks
+    }
+}
