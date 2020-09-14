@@ -15,7 +15,7 @@ function validateSubTask(req, res, next){
 }
 
 async function validateId(req, res, next){
-    const { subTaskId } = req.params
+    const subTaskId = req.params.subTaskId
 
     try {
         const exists = await tasks.findById(subTaskId)
@@ -26,6 +26,6 @@ async function validateId(req, res, next){
         }
     } catch (err){
         console.log(err)
-        res.status(500).json({ message: 'coule not validate sub-task id'})
+        res.status(500).json({ message: 'could not validate sub-task id'})
     }
 }

@@ -4,6 +4,9 @@ const router = express.Router({ mergeParams: true })
 const subTasks = require('./sub-task-model')
 const { validateSubTask, validateId } = require('./sub-task-middleware')
 
+const subTask2Router = require('../sub-tasks-2/sub-task-2-router')
+router.use('/:subTaskId/subTasks2', subTask2Router)
+
 router.get('/', async (req, res) => {
     const { id } = req.params
 
@@ -30,24 +33,24 @@ router.post('/', validateSubTask, async (req, res) => {
     
 })
 
-router.put('/:SubTaskId', validateId, async (req, res) => {
-    const taskInfo = req.body
-    const id = req.params.taskId
+router.put('/:subTaskId', validateId, async (req, res) => {
+    const subTaskInfo = req.body
+    const subTaskId = req.params.subTaskId
 
     try{
-        const updatedTask = await subTasks.update(taskInfo, id)
-        res.status(200).json({ updated: updatedTask})
+        const updatedTask = await subTasks.update(subTaskInfo, subTaskId)
+        res.status(200).json({ updated: updatedTask })
     } catch (err){
         console.log(err)
-        res.status(500).json({ message: 'could not update sub task'})
+        res.status(500).json({ message: 'could not update sub task' })
     }
 })
 
-router.delete('/:SubTaskId', validateId, async (req, res) => {
-    const id = req.params.taskId
+router.delete('/:subTaskId', validateId, async (req, res) => {
+    const subTaskId = req.params.subTaskId
 
     try{
-        const deleted = await subTasks.remove(id)
+        const deleted = await subTasks.remove(subTaskId)
         res.status(200).json({ deleted: deleted })
     } catch (err){
         console.log(err)
