@@ -5,7 +5,8 @@ module.exports = {
     register,
     findByUsername,
     update, 
-    remove
+    remove,
+    findUserInfo
 }
 
 function findById(id){
@@ -36,12 +37,38 @@ async function remove(id){
 
 async function findUserInfo(username){
     const user = await db('users').where({ username }).select('id', 'username', 'theme')
-    const userTasks = await db('tasks').where({ user_id: user.id })
-    
-    userTasks.forEach( async (task) => {
-        const subTask = await db('sub_tasks').where({ task_id: task.id })
-        taskSubTasks.push(subTask)
+    console.log('1 ', user)
+    const userTasks = await db('tasks').where({ user_id: user[0].id })
+
+    userTasks.forEach( async (task, i) => {
+        const taskSubTasks = await db('sub_tasks').where({ task_id: task.id })
+        console.log('2 ',task.task_name)
+        taskSubTasks.forEach( async (subTask, i) => {
+            const subTasks2 = await db('sub_tasks_2').where({ sub_task_id: subTask.id})
+            const x = {
+                ...subTask,
+                subTasks2: subTasks2
+            }
+            subTask = x
+        })
+
+        const z = {
+            ...task,
+            subTasks: taskSubTasks
+        }
+        
+        task = z
+        console.log('3.1 ', task.subTasks)
     })
+
+    user.tasks = userTasks
+    console.log('3 ', user.tasks[0].task_name)
+
+    const userData = user
+
+    return {
+        user: userData
+    }
 }
 
 
