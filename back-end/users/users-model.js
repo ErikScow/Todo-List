@@ -37,8 +37,47 @@ async function remove(id){
 async function findUserInfo(username){
     const user = await db('users').where({ username }).select('id', 'username', 'theme')
     const userTasks = await db('tasks').where({ user_id: user.id })
-    return {
-        user: user,
-        tasks: userTasks
-    }
+    
+    userTasks.forEach( async (task) => {
+        const subTask = await db('sub_tasks').where({ task_id: task.id })
+        taskSubTasks.push(subTask)
+    })
 }
+
+
+// This is what I want the return data to be when the front end requests user data. To be used on login.
+/* [
+    {
+        user: allUserInfo,
+        tasks: [
+            {
+                task: allTaskInfo,
+                subTasks: [
+                    {
+                        subTask: allSubTaskInfo,
+                        subSubTasks: [
+                            {
+                                subSubTask: allSubSubTaskInfo
+                            }
+                        ]
+                    },
+                    {
+                        subTask: anotherSubTasksInfo,
+                        subSubTasks: [
+                            {
+                                subSubTask: anotherSubSubTasksInfo
+                            },
+                            {
+                                subSubTask: yetAnotherSubSubTasksInfo
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                task: anotherTasksInfo,
+                subTasks: []
+            }
+        ]
+    }
+] */
