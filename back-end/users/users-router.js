@@ -35,11 +35,10 @@ router.post('/login', async (req, res) => {
         if (user && bcrypt.compareSync(password, user.password)){
             const token = generateToken(user)
             const userData = await users.findUserInfo(username)
-            console.log('4 ',userData.tasks)
             res.status(200).json({ 
                 message: ` ${username} logged in`, 
-                jwt: token, 
-                user: {userData}
+                tokens: token, 
+                user: {...userData}
             })
         } else {
             res.status(400).json({ message: 'invalid username or password'})

@@ -50,15 +50,12 @@ async function findUserInfo(username){
                         ...subTask,
                         subTasks2: subTasks2
                     }
-                    console.log('5' ,subTaskData)
                     return subTaskData
             }))
-            console.log('8',taskSubTasks)
             const taskData = {
                 ...task,
                 subTasks: taskSubTasksData
             }
-            console.log('6',taskData)
             return taskData
         } catch (err){
             console.log(err)
@@ -67,8 +64,6 @@ async function findUserInfo(username){
      
     }))
 
-    console.log('7',userTasksData)
-
     const userData = {
         id: user[0].id,
         username: user[0].username,
@@ -76,47 +71,7 @@ async function findUserInfo(username){
         tasks: userTasksData
     }
 
-    console.log('3 ', userData)
-
     return {
         ...userData
     }
 }
-
-
-// This is what I want the return data to be when the front end requests user data. To be used on login.
-/* [
-    {
-        user: allUserInfo,
-        tasks: [
-            {
-                task: allTaskInfo,
-                subTasks: [
-                    {
-                        subTask: allSubTaskInfo,
-                        subSubTasks: [
-                            {
-                                subSubTask: allSubSubTaskInfo
-                            }
-                        ]
-                    },
-                    {
-                        subTask: anotherSubTasksInfo,
-                        subSubTasks: [
-                            {
-                                subSubTask: anotherSubSubTasksInfo
-                            },
-                            {
-                                subSubTask: yetAnotherSubSubTasksInfo
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                task: anotherTasksInfo,
-                subTasks: []
-            }
-        ]
-    }
-] */
