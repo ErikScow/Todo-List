@@ -37,31 +37,35 @@ async function remove(id){
 
 async function findUserInfo(username){
     const user = await db('users').where({ username }).select('id', 'username', 'theme')
-    console.log('1 ', user)
     const userTasks = await db('tasks').where({ user_id: user[0].id })
 
-    const userTasksData = await userTasks.map( async (task, i) => {
-        const taskSubTasks = await db('sub_tasks').where({ task_id: task.id })
-        console.log('2 ',task.task_name)
-        const taskSubTasksData = await taskSubTasks.map( async (subTask, i) => {
-            const subTasks2 = await db('sub_tasks_2').where({ sub_task_id: subTask.id})
+    const userTasksData = await Promise.all(userTasks.map( async (task, i) => {
 
-            const subTaskData = {
-                ...subTask,
-                subTasks2: subTasks2
+        try {
+            const taskSubTasks = await db('sub_tasks').where({ task_id: task.id })
+            const taskSubTasksData = await Promise.all(taskSubTasks.map( async (subTask, i) => {
+                const subTasks2 = await db('sub_tasks_2').where({ sub_task_id: subTask.id})
+
+                    const subTaskData = {
+                        ...subTask,
+                        subTasks2: subTasks2
+                    }
+                    console.log('5' ,subTaskData)
+                    return subTaskData
+            }))
+            console.log('8',taskSubTasks)
+            const taskData = {
+                ...task,
+                subTasks: taskSubTasksData
             }
-            console.log('5' ,subTaskData)
-            return subTaskData
-        })
-        console.log('8',taskSubTasks)
-        const taskData = {
-            ...task,
-            subTasks: taskSubTasksData
+            console.log('6',taskData)
+            return taskData
+        } catch (err){
+            console.log(err)
+            res.status(500).json({ message: 'problem retrieving data' })
         }
-        console.log('6',taskData)
-        return taskData
-        console.log('3.1 ', task.subTasks)
-    })
+     
+    }))
 
     console.log('7',userTasksData)
 
@@ -72,7 +76,7 @@ async function findUserInfo(username){
         tasks: userTasksData
     }
 
-    console.log('3 ', userData.tasks[0].subTasks)
+    console.log('3 ', userData)
 
     return {
         ...userData
