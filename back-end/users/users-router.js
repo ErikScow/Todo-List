@@ -39,7 +39,7 @@ router.post('/login', async (req, res) => {
             res.status(200).json({ 
                 message: ` ${username} logged in`, 
                 jwt: token, 
-                user: userData
+                user: {userData}
             })
         } else {
             res.status(400).json({ message: 'invalid username or password'})

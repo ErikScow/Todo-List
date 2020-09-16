@@ -40,34 +40,42 @@ async function findUserInfo(username){
     console.log('1 ', user)
     const userTasks = await db('tasks').where({ user_id: user[0].id })
 
-    userTasks.forEach( async (task, i) => {
+    const userTasksData = await userTasks.map( async (task, i) => {
         const taskSubTasks = await db('sub_tasks').where({ task_id: task.id })
         console.log('2 ',task.task_name)
-        taskSubTasks.forEach( async (subTask, i) => {
+        const taskSubTasksData = await taskSubTasks.map( async (subTask, i) => {
             const subTasks2 = await db('sub_tasks_2').where({ sub_task_id: subTask.id})
-            const x = {
+
+            const subTaskData = {
                 ...subTask,
                 subTasks2: subTasks2
             }
-            subTask = x
+            console.log('5' ,subTaskData)
+            return subTaskData
         })
-
-        const z = {
+        console.log('8',taskSubTasks)
+        const taskData = {
             ...task,
-            subTasks: taskSubTasks
+            subTasks: taskSubTasksData
         }
-        
-        task = z
+        console.log('6',taskData)
+        return taskData
         console.log('3.1 ', task.subTasks)
     })
 
-    user.tasks = userTasks
-    console.log('3 ', user.tasks[0].task_name)
+    console.log('7',userTasksData)
 
-    const userData = user
+    const userData = {
+        id: user[0].id,
+        username: user[0].username,
+        theme: user[0].theme,
+        tasks: userTasksData
+    }
+
+    console.log('3 ', userData.tasks[0].subTasks)
 
     return {
-        user: userData
+        ...userData
     }
 }
 
