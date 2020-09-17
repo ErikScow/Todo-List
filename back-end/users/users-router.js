@@ -37,7 +37,7 @@ router.post('/login', async (req, res) => {
             const userData = await users.findUserInfo(username)
             res.status(200).json({ 
                 message: ` ${username} logged in`, 
-                tokens: token, 
+                token: token, 
                 user: {...userData}
             })
         } else {
