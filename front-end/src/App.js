@@ -1,12 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams
+} from 'react-router-dom'
+
+import Nav from './Components/Nav'
 
 function App() {
   return (
-    <div className="App">
-        <div>todo list project starting</div>
-    </div>
+    <Router>
+      <div className="App">
+        <Nav/>
+      </div>
+    </Router>
+    
   );
 }
 
