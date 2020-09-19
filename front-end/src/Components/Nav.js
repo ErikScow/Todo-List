@@ -5,11 +5,20 @@ import {
     Route
 } from 'react-router-dom'
 
+import { useContext } from 'react'
+import { UserContext } from '../contexts/UserContext'
+
+const loggedIn = false
+
 function Nav(){
-    const loggedIn = true
+    const { passed } = useContext(UserContext)
+    const [statePassed, setStatePassed] = passed
+
+    console.log(passed)
     if (loggedIn === false){
         return(
             <div>
+                <div>context: {statePassed.here}</div>
                 <ul>
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/login">Login</Link></li>
@@ -21,6 +30,8 @@ function Nav(){
                     <Route path="/register"></Route>
                 </Switch>
             </div>
+            
+            
         )
     } else {
         return(
@@ -38,6 +49,10 @@ function Nav(){
             </div>
         )
     }
+        
+
+        
+    
     
 }
 
