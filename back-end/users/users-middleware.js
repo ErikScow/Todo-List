@@ -13,10 +13,11 @@ function authenticate(req, res, next){
     const id = parseInt(req.params.id)
 
     if(req.headers.authorization){
-        const [authType, token] = req.headers.authorization.split(" ")
+        const token = req.headers.authorization.split(" ")[1]
         if (token){
             jwt.verify(token, secrets.jwtSecret, (err, decodedToken) => {
                 if (err){
+                    console.log(err)
                     res.status(401).json({ message: 'invalid token' })
                 } else if (decodedToken.userId === id){
                     req.decodedToken = decodedToken
@@ -44,12 +45,12 @@ async function isUnique(req, res, next){
         if (dbUser && dbUser.id === id){
             next()
         } else if (dbUser){
-            res.status(400).json({ message: "username taken here"})
+            res.status(400).json({ message: "username taken" })
         } else {
             next()
         }
     } else if (dbUser){
-        res.status(400).json({ message: "username taken"})
+        res.status(400).json({ message: "username taken" })
     } else {
         next()
     }

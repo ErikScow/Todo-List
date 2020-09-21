@@ -74,6 +74,10 @@ router.delete('/:id', authenticate, validateId, async (req, res) => {
     }
 })
 
+router.get('/', authenticate, (req, res) => {
+    res.status(200).json({ message: 'token is valid' })
+})
+
 function generateToken(user){
     const payload = {
         userId: user.id,
