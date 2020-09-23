@@ -10,21 +10,23 @@ import PrivateRoute from './components/PrivateRoute'
 import Nav from './components/Nav'
 import RegisterForm from './components/RegisterForm'
 
+import Active from './components/tasks/Active'
+
 import { UserContext } from './contexts/UserContext'
 
 function App() {
 
-  const[passed, setPassed] = useState({another: 'something else',here: 'something'})
+  const[user, setUser] = useState({})
 
   return (
     <Router>
-      <UserContext.Provider value={{passed :[passed, setPassed]}}>
+      <UserContext.Provider value={{user : [user, setUser]}}>
         <Nav/>
         <Switch>
             <Route exact path="/"></Route>
             <Route path="/login"></Route>
             <Route path="/register"><RegisterForm /></Route>
-            <PrivateRoute path="/active" />
+            <PrivateRoute path="/active" component={Active}/>
             <PrivateRoute path="/completed" />
             <PrivateRoute path="/discarded" />
         </Switch>

@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import * as yup from 'yup'
+import { useHistory } from 'react-router-dom'
 
 import axiosWithAuth from '../axiosWithAuth'
+import { UserContext } from '../contexts/UserContext'
 
 const validationSchema = yup.object().shape({
     username: yup
@@ -14,7 +16,10 @@ const validationSchema = yup.object().shape({
         .required('Required')
 })
 
-const LoginForm = () => {
+const RegisterForm = (props) => {
+    const { user } = useContext(UserContext)
+    const [userData, setUserData] = user
+
     const [input, setInput] = useState('')
     const [errors, setErrors] = useState('')
     const [buttonDisabled, setButtonDisabled] = useState(true)
@@ -25,6 +30,8 @@ const LoginForm = () => {
             setButtonDisabled(!valid)
         })
     }, [input])
+
+    let history = useHistory()
 
     const changeHandler = e => {
         e.persist()
@@ -57,20 +64,18 @@ const LoginForm = () => {
             .then(() => {
                 axiosWithAuth().post('http://localhost:5000/api/users/login', input)
                     .then(res => {
-                        console.log(res.data)
-                        
+                        localStorage.removeItem('token')
+                        localStorage.setItem('token', res.data.token)
+                        setUserData(res.data.user)
+                        history.push('/active')
                     })
             })
             .catch(err => {
-                if (err.response.data.message){
+                if (err.response && err.response.data.message){
                     setApiErrorMessage(err.response.data.message)
                 } else {
-                    setApiErrorMessage(err)
+                    setApiErrorMessage("Network Error")
                 }
-            })
-            .then(() => {
-                axiosWithAuth().post('http://localhost:5000/api/users/login', input)
-                    .then()
             })
     }
 
@@ -100,4 +105,4 @@ const LoginForm = () => {
     )
 }
 
-export default LoginForm
+export default RegisterForm

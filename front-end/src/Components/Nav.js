@@ -9,16 +9,9 @@ import { UserContext } from '../contexts/UserContext'
 const loggedIn = false
 
 const Nav = () => {
-    const { passed } = useContext(UserContext)
-    const [statePassed, setStatePassed] = passed
-    useEffect(()=>{
-    console.log(statePassed)
-    setStatePassed( { ...statePassed, here: 'newstate' } )
-    },[])
     if (loggedIn === false){
         return(
             <div>
-                <div>context: {statePassed.another}, {statePassed.here}</div>
                 <ul>
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/login">Login</Link></li>

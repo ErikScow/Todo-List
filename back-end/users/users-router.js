@@ -74,7 +74,7 @@ router.delete('/:id', authenticate, validateId, async (req, res) => {
     }
 })
 
-router.get('/', authenticate, (req, res) => {
+router.get('/:id', authenticate, (req, res) => {
     res.status(200).json({ message: 'token is valid' })
 })
 
