@@ -6,10 +6,12 @@ import {
 import { useContext } from 'react'
 import { UserContext } from '../contexts/UserContext'
 
-const loggedIn = false
 
 const Nav = () => {
-    if (loggedIn === false){
+    const { loggedIn } = useContext(UserContext)
+    const [loggedInStatus, setLoggedIn] = loggedIn
+
+    if (loggedInStatus === false){
         return(
             <div>
                 <ul>

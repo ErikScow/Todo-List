@@ -17,7 +17,8 @@ const validationSchema = yup.object().shape({
 })
 
 const RegisterForm = (props) => {
-    const { user } = useContext(UserContext)
+    const { loggedIn, user } = useContext(UserContext)
+    const [loggedInStatus, setLoggedIn] = loggedIn
     const [userData, setUserData] = user
 
     const [input, setInput] = useState('')
@@ -65,7 +66,9 @@ const RegisterForm = (props) => {
                 axiosWithAuth().post('http://localhost:5000/api/users/login', input)
                     .then(res => {
                         localStorage.removeItem('token')
+                        localStorage.removeItem('user-state')
                         localStorage.setItem('token', res.data.token)
+                        localStorage.setItem('user-state', JSON.stringify(res.data.user))
                         setUserData(res.data.user)
                         history.push('/active')
                     })

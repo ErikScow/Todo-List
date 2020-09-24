@@ -16,11 +16,15 @@ import { UserContext } from './contexts/UserContext'
 
 function App() {
 
+  const [loggedIn, setLoggedIn] = useState(false)
   const[user, setUser] = useState({})
 
   return (
     <Router>
-      <UserContext.Provider value={{user : [user, setUser]}}>
+      <UserContext.Provider value={{
+        loggedIn : [loggedIn, setLoggedIn],
+        user : [user, setUser]
+        }}>
         <Nav/>
         <Switch>
             <Route exact path="/"></Route>
