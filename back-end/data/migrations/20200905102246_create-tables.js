@@ -9,6 +9,7 @@ exports.up = function(knex) {
         tbl.text('password', 128)
           .notNullable()
         tbl.integer('theme')
+          .defaultTo(0)
     })
     .createTable('tasks', (tbl) => {
       tbl.increments()
@@ -25,8 +26,8 @@ exports.up = function(knex) {
       tbl.text('complete_by', 128)
       tbl.integer('priority')
         .defaultTo(1)
-      tbl.boolean('completed')
-        .defaultTo(false)
+      tbl.integer('status')
+        .defaultTo(0)
     })
     .createTable('sub_tasks', (tbl) => {
       tbl.increments()
@@ -43,8 +44,8 @@ exports.up = function(knex) {
       tbl.text('complete_by', 128)
       tbl.integer('priority')
         .defaultTo(1)
-      tbl.boolean('completed')
-        .defaultTo(false)
+      tbl.integer('status')
+        .defaultTo(0)
     })
     .createTable('sub_tasks_2', (tbl) => {
       tbl.increments()
@@ -61,8 +62,8 @@ exports.up = function(knex) {
       tbl.text('complete_by', 128)
       tbl.integer('priority')
         .defaultTo(1)
-      tbl.boolean('completed')
-        .defaultTo(false)
+      tbl.integer('status')
+        .defaultTo(0)
     })
   };
   

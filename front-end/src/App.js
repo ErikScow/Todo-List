@@ -9,8 +9,11 @@ import {
 import PrivateRoute from './components/PrivateRoute'
 import Nav from './components/Nav'
 import RegisterForm from './components/RegisterForm'
+import LoginForm from './components/LoginForm'
 
-import Active from './components/tasks/Active'
+import Active from './components/tabs/Active'
+import Completed from './components/tabs/Completed'
+import Discarded from './components/tabs/Discarded'
 
 import { UserContext } from './contexts/UserContext'
 
@@ -28,11 +31,11 @@ function App() {
         <Nav/>
         <Switch>
             <Route exact path="/"></Route>
-            <Route path="/login"></Route>
-            <Route path="/register"><RegisterForm /></Route>
+            <Route path="/login" component={LoginForm}/>
+            <Route path="/register" component={RegisterForm}/>
             <PrivateRoute path="/active" component={Active}/>
-            <PrivateRoute path="/completed" />
-            <PrivateRoute path="/discarded" />
+            <PrivateRoute path="/completed" component={Completed}/>
+            <PrivateRoute path="/discarded" component={Discarded}/>
         </Switch>
       </UserContext.Provider>
     </Router>
