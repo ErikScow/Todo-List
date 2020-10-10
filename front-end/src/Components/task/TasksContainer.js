@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 
 import { UserContext } from '../../contexts/UserContext'
 
+import CreateTaskForm from './CreateTaskForm'
 import Task from './Task'
 
 const TasksContainer = (props) => {
@@ -10,6 +11,7 @@ const TasksContainer = (props) => {
 
     return(
         <div>
+            <CreateTaskForm/>
             {userData.tasks.map((task, i) => {
                 if (props.status === userData.tasks[i].status){
                     return <Task key={i} task={task}/>

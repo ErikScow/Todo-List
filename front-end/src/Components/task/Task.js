@@ -11,9 +11,11 @@ const Task = (props) => {
     return(
         <div>
             <h3>{props.task.task_name}</h3>
-            {props.task.subTasks.map((subTask, i) => {
-                return <SubTask key={i} subTask={subTask}/>
-            })}
+            {
+                props.task.subTasks.map((subTask, i) => {
+                    return <SubTask key={i} subTask={subTask}/>
+                })
+            }
         </div>
     )
 }

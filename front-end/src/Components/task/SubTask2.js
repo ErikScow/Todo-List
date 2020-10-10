@@ -8,7 +8,7 @@ const Task = (props) => {
 
     return(
         <div>
-            <h5>{props.subTask2.sub_task_name}</h5>
+            <h5>{props.subTask2.task_name}</h5>
         </div>
     )
 }
