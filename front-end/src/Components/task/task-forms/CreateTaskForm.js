@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import * as yup from 'yup'
-import axiosWithAuth from '../../axiosWithAuth'
-import { UserContext } from '../../contexts/UserContext'
+import axiosWithAuth from '../../../axiosWithAuth'
+import { UserContext } from '../../../contexts/UserContext'
 
 const validationSchema = yup.object().shape({
     task_name: yup

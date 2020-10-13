@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 
 import { UserContext } from '../../contexts/UserContext'
 
-import CreateTaskForm from './CreateTaskForm'
+import CreateTaskForm from './task-forms/CreateTaskForm'
 import Task from './Task'
 
 const TasksContainer = (props) => {

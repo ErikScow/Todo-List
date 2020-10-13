@@ -6,8 +6,8 @@ module.exports = {
 }
 
 function validateSubTask(req, res, next){
-    const { sub_task_name } = req.body
-    if (sub_task_name){
+    const { task_name } = req.body
+    if (task_name){
         next()
     } else {
         res.status(400).json({ message: 'must include a sub_task_name'})
