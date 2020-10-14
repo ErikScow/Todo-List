@@ -88,62 +88,65 @@ const CreateSubTaskForm = (props) => {
                 }
             })
     }
-
-    return(
-        <form onSubmit={submitHandler}>
-            <label>
-                Sub Task
-                <input
-                    type = 'text'
-                    name = 'task_name'
-                    onChange = {changeHandler}
-                />
-                
-                {errors.task_name ? (<p className="form-error">{errors.task_name}</p>) : null}
-            </label>
-            <label>
-                Description
-                <input
-                    type = 'text'
-                    name = 'task_description'
-                    onChange = {changeHandler}
-                />
-                
-                {errors.task_description ? (<p className="form-error">{errors.task_description}</p>) : null}
-            </label>
-            <label>
-                Start By
-                <input
-                    type = 'text'
-                    name = 'created'
-                    onChange = {changeHandler}
-                />
-                
-                {errors.created ? (<p className="form-error">{errors.created}</p>) : null}
-            </label>
-            <label>
-                Finish By
-                <input
-                    type = 'text'
-                    name = 'complete_by'
-                    onChange = {changeHandler}
-                />
-                
-                {errors.complete_by ? (<p className="form-error">{errors.complete_by}</p>) : null}
-            </label>
-            <label>
-                Priority
-                <select name='priority' size='3' onChange={changeHandler}>
-                    <option value='0'>Low</option>
-                    <option value='1'>Neutral</option>
-                    <option value='2'>High</option>
-                </select>
-                {errors.priority ? (<p className="form-error">{errors.priority}</p>) : null}
-            </label>
-            <p className="form-error">{apiErrorMessage}</p>
-            <button type='submit' disabled={buttonDisabled}>Create</button>
-        </form>
-    )
+    if (props.hidden){
+        return null
+    } else {
+        return(
+            <form onSubmit={submitHandler}>
+                <label>
+                    Sub Task
+                    <input
+                        type = 'text'
+                        name = 'task_name'
+                        onChange = {changeHandler}
+                    />
+                    
+                    {errors.task_name ? (<p className="form-error">{errors.task_name}</p>) : null}
+                </label>
+                <label>
+                    Description
+                    <input
+                        type = 'text'
+                        name = 'task_description'
+                        onChange = {changeHandler}
+                    />
+                    
+                    {errors.task_description ? (<p className="form-error">{errors.task_description}</p>) : null}
+                </label>
+                <label>
+                    Start By
+                    <input
+                        type = 'text'
+                        name = 'created'
+                        onChange = {changeHandler}
+                    />
+                    
+                    {errors.created ? (<p className="form-error">{errors.created}</p>) : null}
+                </label>
+                <label>
+                    Finish By
+                    <input
+                        type = 'text'
+                        name = 'complete_by'
+                        onChange = {changeHandler}
+                    />
+                    
+                    {errors.complete_by ? (<p className="form-error">{errors.complete_by}</p>) : null}
+                </label>
+                <label>
+                    Priority
+                    <select name='priority' size='3' onChange={changeHandler}>
+                        <option value='0'>Low</option>
+                        <option value='1'>Neutral</option>
+                        <option value='2'>High</option>
+                    </select>
+                    {errors.priority ? (<p className="form-error">{errors.priority}</p>) : null}
+                </label>
+                <p className="form-error">{apiErrorMessage}</p>
+                <button type='submit' disabled={buttonDisabled}>Create</button>
+            </form>
+        )
+    }
 }
 
 export default CreateSubTaskForm
