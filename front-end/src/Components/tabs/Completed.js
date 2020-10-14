@@ -1,8 +1,13 @@
 import React from 'react'
 
+import TaskContainer from '../task/TasksContainer'
+
 const Completed = () => {
     return(
-        <div>completed</div>
+        <div>completed
+        <TaskContainer status={1}/>
+        </div>
+        
     )
 }
 

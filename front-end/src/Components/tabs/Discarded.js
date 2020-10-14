@@ -1,8 +1,12 @@
 import React from 'react'
 
+import TaskContainer from '../task/TasksContainer'
+
 const Discarded = () => {
     return(
-        <div>discarded</div>
+        <div>discarded
+            <TaskContainer status={2}/>
+        </div>
     )
 }
 
