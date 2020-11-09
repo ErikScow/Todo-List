@@ -7,7 +7,7 @@ const Task = (props) => {
     const[userData, setUserData] = user
 
     return(
-        <div>
+        <div className="sub-task">
             <h5>{props.subTask2.task_name}</h5>
         </div>
     )

@@ -18,7 +18,7 @@ const validationSchema = yup.object().shape({
         .string(),
 })
 
-const CreateTaskForm = (props) => {
+const CreateSubTask2Form = (props) => {
     const { user } = useContext(UserContext)
     const[userData, setUserData] = user
 
@@ -65,19 +65,20 @@ const CreateTaskForm = (props) => {
     }
 
     const submitHandler = e => {
-        props.toggleHidden()
         e.preventDefault()
-        axiosWithAuth().post(`http://localhost:5000/api/users/${userData.id}/tasks`, input)
+        axiosWithAuth().post(`http://localhost:5000/api/users/${userData.id}/tasks/${props.taskId}/subTasks`, input)
             .then((res) => {
-                res.data = {...res.data, subTasks: []} //add 'fake' subTasks array to state temporarily bc it wont be added to the task data until it is retrieved from the db itself, and we dont want to do another api call right now
-                console.log(res)
-                setUserData({
-                    ...userData, 
-                    tasks:[
-                        ...userData.tasks,
-                        res.data
-                    ]
-                })
+                res.data = {...res.data, subTasks2: []} //add 'fake' subTasks array to state temporarily bc it wont be added to the task data until it is retrieved from the db itself, and we dont want to do another api call right now
+
+                let userTasks = userData.tasks
+                const index = userTasks.findIndex((task) => task.id === props.taskId)
+                let task = userTasks[index]
+                let subTasks = task.subTasks
+                subTasks = [...subTasks, res.data]
+                task = {...task, subTasks}
+                userTasks[index] = task
+
+                setUserData({ ...userData, userTasks })
             })
             .catch(err => {
                 if (err.response && err.response.data.message){
@@ -93,7 +94,7 @@ const CreateTaskForm = (props) => {
         return(
             <form onSubmit={submitHandler}>
                 <label>
-                    Task
+                    Sub Task
                     <input
                         type = 'text'
                         name = 'task_name'
@@ -148,4 +149,4 @@ const CreateTaskForm = (props) => {
     }
 }
 
-export default CreateTaskForm
+export default CreateSubTask2Form

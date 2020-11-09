@@ -27,7 +27,7 @@ const Active = () => {
     return(
         <div>active
             <button onClick={toggleHidden}>{buttonValue}</button>
-            <CreateTaskForm hidden={hidden}/>
+            <CreateTaskForm hidden={hidden} toggleHidden={toggleHidden}/>
             <TasksContainer status={0}/>
         </div>
     )

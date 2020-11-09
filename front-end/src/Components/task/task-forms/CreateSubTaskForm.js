@@ -65,9 +65,11 @@ const CreateSubTaskForm = (props) => {
     }
 
     const submitHandler = e => {
+        props.toggleHidden()
         e.preventDefault()
         axiosWithAuth().post(`http://localhost:5000/api/users/${userData.id}/tasks/${props.taskId}/subTasks`, input)
             .then((res) => {
+                console.log(res.data)
                 res.data = {...res.data, subTasks2: []} //add 'fake' subTasks array to state temporarily bc it wont be added to the task data until it is retrieved from the db itself, and we dont want to do another api call right now
 
                 let userTasks = userData.tasks

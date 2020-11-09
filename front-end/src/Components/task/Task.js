@@ -112,7 +112,7 @@ const Task = (props) => {
 
     if (props.task.status === 2){
         return(
-            <div>
+            <div className="task">
                 <button onClick={discardTask}>{discardButtonValue}</button>
                 <h3>{props.task.task_name}</h3>
                 <button onClick={toggleHidden}>{CreateButtonValue}</button>
@@ -126,12 +126,12 @@ const Task = (props) => {
         )
     } else {
         return(
-            <div>
+            <div className="task">
                 <button onClick={changeTaskStatus}>{statusButtonValue}</button>
                 <button onClick={discardTask}>{discardButtonValue}</button>
                 <h3>{props.task.task_name}</h3>
                 <button onClick={toggleHidden}>{CreateButtonValue}</button>
-                <CreateSubTaskForm taskId ={props.task.id} hidden={hidden}/>
+                <CreateSubTaskForm taskId ={props.task.id} hidden={hidden} toggleHidden={toggleHidden}/>
                 {
                     props.task.subTasks.map((subTask, i) => {
                         return <SubTask key={i} subTask={subTask}/>

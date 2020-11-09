@@ -11,7 +11,6 @@ const TasksContainer = (props) => {
 
     return(
         <div>
-            
             {userData.tasks.map((task, i) => {
                 if (props.status === userData.tasks[i].status){
                     return <Task key={i} task={task}/>

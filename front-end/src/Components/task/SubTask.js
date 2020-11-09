@@ -9,7 +9,7 @@ const Task = (props) => {
     const[userData, setUserData] = user
 
     return(
-        <div>
+        <div className="sub-task">
             <h4>{props.subTask.task_name}</h4>
             {props.subTask.subTasks2.map((subTask2, i) => {
                 return <SubTask2 key={i} subTask2={subTask2}/>
