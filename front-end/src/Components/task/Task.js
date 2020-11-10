@@ -57,8 +57,6 @@ const Task = (props) => {
         
         axiosWithAuth().put(`http://localhost:5000/api/users/${userData.id}/tasks/${props.task.id}`, update)
             .then((res) => {
-                
-                console.log(res)
 
                 let userTasks = userData.tasks
                 const index = userTasks.findIndex((task) => task.id === props.task.id)
@@ -116,10 +114,10 @@ const Task = (props) => {
                 <button onClick={discardTask}>{discardButtonValue}</button>
                 <h3>{props.task.task_name}</h3>
                 <button onClick={toggleHidden}>{CreateButtonValue}</button>
-                <CreateSubTaskForm taskId ={props.task.id} hidden={hidden}/>
+                <CreateSubTaskForm taskId ={props.task.id} hidden={hidden} toggleHidden={toggleHidden}/>
                 {
                     props.task.subTasks.map((subTask, i) => {
-                        return <SubTask key={i} subTask={subTask}/>
+                        return <SubTask key={i} subTask={subTask} taskId ={props.task.id} task={props.task}/>
                     })
                 }
             </div>
@@ -134,7 +132,7 @@ const Task = (props) => {
                 <CreateSubTaskForm taskId ={props.task.id} hidden={hidden} toggleHidden={toggleHidden}/>
                 {
                     props.task.subTasks.map((subTask, i) => {
-                        return <SubTask key={i} subTask={subTask}/>
+                        return <SubTask key={i} subTask={subTask} taskId = {props.task.id} task = {props.task}/>
                     })
                 }
             </div>

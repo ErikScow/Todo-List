@@ -32,7 +32,7 @@ router.post('/', validateSubTask, async (req, res) => {
 
 router.put('/:subTask2Id', validateId, async (req, res) => {
     const subTaskInfo = req.body
-    const subTaskId = req.params.subTaskId
+    const subTaskId = req.params.subTask2Id
 
     try{
         const updatedTask = await subTasks2.update(subTaskInfo, subTaskId)

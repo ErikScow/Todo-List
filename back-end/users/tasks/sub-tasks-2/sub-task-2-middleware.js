@@ -15,8 +15,7 @@ function validateSubTask(req, res, next){
 }
 
 async function validateId(req, res, next){
-    const subTaskId = req.params.subTaskId
-    console.log(subTaskId)
+    const subTaskId = req.params.subTask2Id
 
     try {
         const exists = await tasks.findById(subTaskId)

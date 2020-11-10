@@ -66,17 +66,22 @@ const CreateSubTask2Form = (props) => {
 
     const submitHandler = e => {
         e.preventDefault()
-        axiosWithAuth().post(`http://localhost:5000/api/users/${userData.id}/tasks/${props.taskId}/subTasks`, input)
+        props.toggleHidden()
+        axiosWithAuth().post(`http://localhost:5000/api/users/${userData.id}/tasks/${props.taskId}/subTasks/${props.subTaskId}/subTasks2`, input)
             .then((res) => {
-                res.data = {...res.data, subTasks2: []} //add 'fake' subTasks array to state temporarily bc it wont be added to the task data until it is retrieved from the db itself, and we dont want to do another api call right now
-
+                console.log(res)
                 let userTasks = userData.tasks
-                const index = userTasks.findIndex((task) => task.id === props.taskId)
-                let task = userTasks[index]
+                const taskIndex = userTasks.findIndex((task) => task.id === props.taskId)
+                let task = userTasks[taskIndex]
                 let subTasks = task.subTasks
-                subTasks = [...subTasks, res.data]
+                const subTaskIndex = subTasks.findIndex((subTask) => subTask.id === props.subTaskId)
+                let subTask = subTasks[subTaskIndex]
+                let subTasks2 = subTask.subTasks2
+                subTasks2 = [...subTasks2, res.data]
+                subTask = {...subTask, subTasks2}
+                subTasks[subTaskIndex] = subTask
                 task = {...task, subTasks}
-                userTasks[index] = task
+                userTasks[taskIndex] = task
 
                 setUserData({ ...userData, userTasks })
             })
