@@ -3,11 +3,15 @@ import axiosWithAuth from '../../axiosWithAuth'
 
 import { UserContext } from '../../contexts/UserContext'
 
+import UpdateSubTask2Form from './task-forms/UpdateSubTask2Form'
+
 const Task = (props) => {
     const { user } = useContext(UserContext)
     const[userData, setUserData] = user
 
+    const [hiddenEdit, setHiddenEdit] = useState(true)
     const[statusButtonValue, setStatusButtonValue] = useState('Finish Task')
+    const [editButtonValue, setEditButtonValue] = useState('Edit')
 
     const changeTaskStatus = () => {
         let update = {}
@@ -43,20 +47,37 @@ const Task = (props) => {
             })
     }
 
-    useEffect(() => {
-        if(props.subTask2.status === 0){
-            setStatusButtonValue('Finish Task')
-        } else if (props.subTask2.status === 1){
-            setStatusButtonValue('Not Finished')
+    const toggleHiddenEdit = () => {
+        if (hiddenEdit){
+            setHiddenEdit(false)
         } else {
-            setStatusButtonValue(null)
+            setHiddenEdit(true)
         }
-    }, [props.subTask2.status])
+    }
 
+    useEffect(() => {
+        if(hiddenEdit){
+            setEditButtonValue('Edit')
+        } else {
+            setEditButtonValue('Cancel')
+        }
+    }, [hiddenEdit])
+
+    useEffect(() => {
+            if(props.subTask2.status === 0){
+                setStatusButtonValue('Finish Task')
+            } else if (props.subTask2.status === 1){
+                setStatusButtonValue('Not Finished')
+            } else {
+                setStatusButtonValue(null)
+            }
+        }, [props.subTask2.status])
     return(
         <div className="sub-task">
             <button onClick={changeTaskStatus}>{statusButtonValue}</button>
             <h5>{props.subTask2.task_name}</h5>
+            <button onClick={toggleHiddenEdit}>{editButtonValue}</button>
+            <UpdateSubTask2Form hiddenEdit={hiddenEdit} toggleHiddenEdit={toggleHiddenEdit} task={props.task} subTask={props.subTask} subTask2={props.subTask2}/>
         </div>
     )
 }

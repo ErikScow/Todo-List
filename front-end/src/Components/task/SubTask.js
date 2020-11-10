@@ -5,13 +5,16 @@ import { UserContext } from '../../contexts/UserContext'
 
 import SubTask2 from './SubTask2'
 import CreateSubTask2Form from './task-forms/CreateSubTask2Form'
+import UpdateSubTaskForm from './task-forms/UpdateSubTaskForm'
 
 const Task = (props) => {
     const { user } = useContext(UserContext)
     const[userData, setUserData] = user
 
+    const [hiddenEdit, setHiddenEdit] = useState(true)
     const [hidden, setHidden] = useState(true)
     const [createButtonValue, setCreateButtonValue] = useState('Add a sub task')
+    const [editButtonValue, setEditButtonValue] = useState('Edit')
     const [statusButtonValue, setStatusButtonValue] = useState('Finish Task')
 
     const changeTaskStatus = () => {
@@ -55,6 +58,14 @@ const Task = (props) => {
         }
     }
 
+    const toggleHiddenEdit = () => {
+        if (hiddenEdit){
+            setHiddenEdit(false)
+        } else {
+            setHiddenEdit(true)
+        }
+    }
+
     useEffect(() => {
         if(hidden){
             setCreateButtonValue('Add a sub task')
@@ -62,6 +73,14 @@ const Task = (props) => {
             setCreateButtonValue('Cancel')
         }
     }, [hidden])
+
+    useEffect(() => {
+        if(hiddenEdit){
+            setEditButtonValue('Edit')
+        } else {
+            setEditButtonValue('Cancel')
+        }
+    }, [hiddenEdit])
 
     useEffect(() => {
         if(props.subTask.status === 0){
@@ -78,7 +97,9 @@ const Task = (props) => {
             <button onClick={changeTaskStatus}>{statusButtonValue}</button>
             <h4>{props.subTask.task_name}</h4>
             <button onClick={toggleHidden}>{createButtonValue}</button>
+            <button onClick={toggleHiddenEdit}>{editButtonValue}</button>
             <CreateSubTask2Form hidden={hidden} toggleHidden={toggleHidden} task={props.task} taskId={props.taskId} subTask={props.subTask} subTaskId={props.subTask.id}/>
+            <UpdateSubTaskForm hiddenEdit={hiddenEdit} toggleHiddenEdit={toggleHiddenEdit} task={props.task} subTask={props.subTask}/>
             {props.subTask.subTasks2.map((subTask2, i) => {
                 return <SubTask2 key={i} subTask={props.subTask} task={props.task} subTask2={subTask2}/>
             })}
