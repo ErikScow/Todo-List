@@ -74,6 +74,28 @@ const UpdateTaskForm = (props) => {
                 }
             })
     }
+
+    const deleteTask = () => {
+        props.toggleHiddenEdit()
+        axiosWithAuth().delete(`http://localhost:5000/api/users/${userData.id}/tasks/${props.task.id}`)
+            .then((res) => {
+
+                let userTasks = userData.tasks
+                const index = userTasks.findIndex((task) => task.id === props.task.id)
+
+                userTasks.splice(index, 1)
+
+                setUserData({...userData, userTasks})
+            })
+            .catch(err => {
+                if (err.response && err.response.data.message){
+                    setApiErrorMessage(err.response.data.message)
+                } else {
+                    setApiErrorMessage("Network Error")
+                }
+            })
+    }
+
     if (props.hiddenEdit){
         return null
     } else {
@@ -121,6 +143,7 @@ const UpdateTaskForm = (props) => {
                 </label>
                 <p className="form-error">{apiErrorMessage}</p>
                 <button type='submit' disabled={buttonDisabled}>Update</button>
+                <button type="button" onClick={deleteTask}>Delete Task</button>
             </form>
         )
     }

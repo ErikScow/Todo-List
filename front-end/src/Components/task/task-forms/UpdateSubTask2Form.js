@@ -81,6 +81,39 @@ const UpdateSubTask2Form = (props) => {
                 }
             })
     }
+
+    const deleteTask = () => {
+        props.toggleHiddenEdit()
+        axiosWithAuth().delete(`http://localhost:5000/api/users/${userData.id}/tasks/${props.task.id}/subTasks/${props.subTask.id}/subTasks2/${props.subTask2.id}`)
+            .then((res) => {
+                let userTasks = userData.tasks
+                const index = userTasks.findIndex((task) => task.id === props.task.id)
+
+                let subTasks = userData.tasks[index].subTasks
+
+                const subTaskIndex = subTasks.findIndex((subTask) => subTask.id === props.subTask.id)
+
+                let subTasks2 = userData.tasks[index].subTasks[subTaskIndex].subTasks2
+
+                const subTask2Index = subTasks2.findIndex((subTask2) => subTask2.id === props.subTask2.id)
+
+                subTasks2.splice(subTask2Index, 1)
+                let subTask = {...props.subTask, subTasks2}
+                subTasks[subTaskIndex] = subTask
+                let task = {...props.task, subTasks}
+                userTasks[index] = task
+
+                setUserData({...userData, userTasks})
+            })
+            .catch(err => {
+                if (err.response && err.response.data.message){
+                    setApiErrorMessage(err.response.data.message)
+                } else {
+                    setApiErrorMessage("Network Error")
+                }
+            })
+    }
+
     if (props.hiddenEdit){
         return null
     } else {
@@ -128,6 +161,7 @@ const UpdateSubTask2Form = (props) => {
                 </label>
                 <p className="form-error">{apiErrorMessage}</p>
                 <button type='submit' disabled={buttonDisabled}>Update</button>
+                <button type="button" onClick={deleteTask}>Delete Task</button>
             </form>
         )
     }
