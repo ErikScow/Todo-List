@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom'
 
 import PrivateRoute from './components/PrivateRoute'
-import Nav from './components/Nav'
+import Nav from './components/navigation/Nav'
 import RegisterForm from './components/RegisterForm'
 import LoginForm from './components/LoginForm'
 
