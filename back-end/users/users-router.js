@@ -49,7 +49,7 @@ router.post('/login', async (req, res) => {
     }
 })
 
-router.put('/:id', authenticate, isUnique, validateId, validateUser, async (req, res) => {
+router.put('/:id', authenticate, isUnique, validateId, async (req, res) => {
     const userInfo = req.body
     const id  = req.params.id
 

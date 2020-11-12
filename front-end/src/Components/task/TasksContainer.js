@@ -12,9 +12,31 @@ const TasksContainer = (props) => {
     return(
         <div>
             {userData.tasks.map((task, i) => {
-                if (props.status === userData.tasks[i].status){
-                    return <Task key={i} task={task}/>
+                
+                if (task.priority === 2) {
+                    if (props.status === userData.tasks[i].status){
+                    return <Task priority='high-priority' key={i} task={task}/>
+                    }
                 }
+                
+            })}
+            {userData.tasks.map((task, i) => {
+                
+                if (task.priority === 1) {
+                    if (props.status === userData.tasks[i].status){
+                    return <Task priority='mid-priority' key={i} task={task}/>
+                    }
+                }
+                
+            })}
+           {userData.tasks.map((task, i) => {
+                
+                if (task.priority === 0) {
+                    if (props.status === userData.tasks[i].status){
+                    return <Task priority='low-priority' key={i} task={task}/>
+                    }
+                }
+                
             })}
         </div>
     )

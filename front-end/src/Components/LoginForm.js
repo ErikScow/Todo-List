@@ -50,7 +50,6 @@ const LoginForm = () => {
                 localStorage.setItem('token', res.data.token)
                 localStorage.setItem('user-state', JSON.stringify(res.data.user))
                 setUserData(res.data.user)
-                console.log(res.data.user)
                 history.push('/active')
             })
             .catch(err => {

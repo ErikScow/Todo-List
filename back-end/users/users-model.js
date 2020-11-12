@@ -10,7 +10,7 @@ module.exports = {
 }
 
 function findById(id){
-    return db('users').where({ id }).first().select('id','username')
+    return db('users').where({ id }).first().select('id','username', 'theme')
 }
 
 async function register(userInfo){

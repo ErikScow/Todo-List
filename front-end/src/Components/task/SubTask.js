@@ -13,9 +13,12 @@ const Task = (props) => {
 
     const [hiddenEdit, setHiddenEdit] = useState(true)
     const [hidden, setHidden] = useState(true)
+    const [hideCompleted, setHideCompleted] = useState(true)
+
     const [createButtonValue, setCreateButtonValue] = useState('Add a sub task')
     const [editButtonValue, setEditButtonValue] = useState('Edit')
     const [statusButtonValue, setStatusButtonValue] = useState('Finish Task')
+    const [hideCompletedButton, setHideCompletedButton] = useState('Show Completed Sub Tasks')
 
     const changeTaskStatus = () => {
         let update = {}
@@ -66,6 +69,14 @@ const Task = (props) => {
         }
     }
 
+    const toggleHideCompleted = () => {
+        if (hideCompleted){
+            setHideCompleted(false)
+        } else {
+            setHideCompleted(true)
+        }
+    }
+
     useEffect(() => {
         if(hidden){
             setCreateButtonValue('Add a sub task')
@@ -83,6 +94,14 @@ const Task = (props) => {
     }, [hiddenEdit])
 
     useEffect(() => {
+        if(hideCompleted){
+            setHideCompletedButton('Show Completed Sub Tasks')
+        } else {
+            setHideCompletedButton('Hide Completed Sub Tasks')
+        }
+    },[hideCompleted])
+
+    useEffect(() => {
         if(props.subTask.status === 0){
             setStatusButtonValue('Finish Task')
         } else if (props.subTask.status === 1){
@@ -92,8 +111,9 @@ const Task = (props) => {
         }
     }, [props.subTask.status])
 
+    const className = `sub-task ${props.priority}`
     return(
-        <div className="sub-task">
+        <div className={className}>
             <button onClick={changeTaskStatus}>{statusButtonValue}</button>
             <h4>{props.subTask.task_name}</h4>
             <button onClick={toggleHidden}>{createButtonValue}</button>
@@ -101,7 +121,25 @@ const Task = (props) => {
             <CreateSubTask2Form hidden={hidden} toggleHidden={toggleHidden} task={props.task} taskId={props.taskId} subTask={props.subTask} subTaskId={props.subTask.id}/>
             <UpdateSubTaskForm hiddenEdit={hiddenEdit} toggleHiddenEdit={toggleHiddenEdit} task={props.task} subTask={props.subTask}/>
             {props.subTask.subTasks2.map((subTask2, i) => {
-                return <SubTask2 key={i} subTask={props.subTask} task={props.task} subTask2={subTask2}/>
+                if(subTask2.priority === 2 && subTask2.status === 0){
+                    return <SubTask2 priority='high-priority' key={i} subTask={props.subTask} task={props.task} subTask2={subTask2}/>
+                }
+            })}
+            {props.subTask.subTasks2.map((subTask2, i) => {
+                if(subTask2.priority === 1 && subTask2.status === 0){
+                    return <SubTask2 priority='mid-priority' key={i} subTask={props.subTask} task={props.task} subTask2={subTask2}/>
+                }
+            })}
+            {props.subTask.subTasks2.map((subTask2, i) => {
+                if(subTask2.priority === 0 && subTask2.status === 0){
+                    return <SubTask2 priority='low-priority' key={i} subTask={props.subTask} task={props.task} subTask2={subTask2}/>
+                }
+            })}
+            <button onClick={toggleHideCompleted}>{hideCompletedButton}</button>
+            {props.subTask.subTasks2.map((subTask2, i) => {
+                if(subTask2.status === 1 && hideCompleted === false){
+                    return <SubTask2 priority='completed-priority' key={i} subTask={props.subTask} task={props.task} subTask2={subTask2}/>
+                }
             })}
         </div>
     )

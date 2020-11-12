@@ -72,8 +72,10 @@ const Task = (props) => {
                 setStatusButtonValue(null)
             }
         }, [props.subTask2.status])
+
+    const className = `sub-task ${props.priority}`
     return(
-        <div className="sub-task">
+        <div className={className}>
             <button onClick={changeTaskStatus}>{statusButtonValue}</button>
             <h5>{props.subTask2.task_name}</h5>
             <button onClick={toggleHiddenEdit}>{editButtonValue}</button>
