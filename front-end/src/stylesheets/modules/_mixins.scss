@@ -1,0 +1,5 @@
+@mixin flex($flex-flow, $justification ){
+    display:flex;
+    flex-flow: $flex-flow;
+    justify-content: $justification;
+}

@@ -13,7 +13,7 @@ const Nav = () => {
 
     if (loggedInStatus === false){
         return(
-            <div>
+            <div className=''>
                 <ul>
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/login">Login</Link></li>
@@ -25,12 +25,12 @@ const Nav = () => {
         )
     } else {
         return(
-            <div>
-                <ul>
-                    <li><Link to="/active">Active</Link></li>
-                    <li><Link to="/completed">Completed</Link></li>
-                    <li><Link to="/discarded">Discarded</Link></li>
-                </ul>
+            <div className='tabs'>
+                <div className='links-container'>
+                    <Link className='tabs-link' to="/active">Active</Link>
+                    <Link className='tabs-link' to="/completed">Completed</Link>
+                    <Link className='tabs-link' to="/discarded">Discarded</Link>
+                </div>
             </div>
         )
     }

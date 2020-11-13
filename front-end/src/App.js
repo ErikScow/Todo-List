@@ -30,15 +30,21 @@ function App() {
         user : [user, setUser]
         }}>
         <TopNav/>
-        <Nav/>
-        <Switch>
-            <Route exact path="/"></Route>
-            <Route path="/login" component={LoginForm}/>
-            <Route path="/register" component={RegisterForm}/>
-            <PrivateRoute path="/active" component={Active}/>
-            <PrivateRoute path="/completed" component={Completed}/>
-            <PrivateRoute path="/discarded" component={Discarded}/>
-        </Switch>
+        <div className='main-container'>
+          <Nav/>
+          <div className='content-container'>
+            <Switch>
+                <Route exact path="/"></Route>
+                <Route path="/login" component={LoginForm}/>
+                <Route path="/register" component={RegisterForm}/>
+                <PrivateRoute path="/active" component={Active}/>
+                <PrivateRoute path="/completed" component={Completed}/>
+                <PrivateRoute path="/discarded" component={Discarded}/>
+            </Switch>
+          </div>
+          
+        </div>
+        
       </UserContext.Provider>
     </Router>
   );

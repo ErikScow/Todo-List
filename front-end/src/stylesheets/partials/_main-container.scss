@@ -1,0 +1,27 @@
+
+
+.main-container{
+    @include flex(row nowrap, space-between);
+    .tabs{
+        width: 20%;
+        .links-container{
+            @include flex(column nowrap, inline);
+        }
+        .tabs-link{
+            color: $text-color;
+            text-decoration: none;
+            font-size: 25px;
+            border-bottom: 2px solid black;
+            padding: 20px;
+        }
+        .tabs-link:hover{
+            color:$button-hover;
+        }
+    }
+    .content-container{
+        @include flex(column nowrap, center);
+        width: 80%;
+        border-left: 2px solid black;
+        padding: 20px;
+    }
+}
