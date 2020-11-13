@@ -1,26 +1,30 @@
 .task{
     padding:20px;
-    border: 2px solid black;
-    margin: 10px;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin: 20px;
+    box-shadow:0 0 20px rgb(44, 44, 44) ;
 }
 .sub-task{
     padding: 15px;
     border: 1px solid black;
-    margin: 10px;
+    border-radius: 20px;
+    margin: 20px;
+    box-shadow:0 0 5px rgb(133, 133, 133) ;
 }
 
 .high-priority{
-    background: lightcoral;
+    background: rgb(189, 45, 45);
 }
 
 .mid-priority{
-    background: lightgoldenrodyellow;
+    background: rgb(71, 168, 71);
 }
 
 .low-priority{
-    background: lightskyblue;
+    background: rgb(62, 145, 197);
 }
 
 .completed-priority{
-    background: lightgray;
+    background: rgb(126, 126, 126);
 }

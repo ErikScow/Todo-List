@@ -63,12 +63,18 @@ table {
   font-size: 30px;
 }
 .top-nav button {
+  color: white;
   font-size: 18px;
   background: none;
   border: none;
 }
 .top-nav button:hover {
   color: lightslategrey;
+}
+
+body {
+  color: white;
+  background: #444444;
 }
 
 .main-container {
@@ -85,11 +91,12 @@ table {
   justify-content: inline;
 }
 .main-container .tabs .tabs-link {
-  color: black;
+  color: white;
   text-decoration: none;
   font-size: 25px;
   border-bottom: 2px solid black;
   padding: 20px;
+  box-shadow: 0 0 20px #464646;
 }
 .main-container .tabs .tabs-link:hover {
   color: lightslategrey;
@@ -105,30 +112,34 @@ table {
 
 .task {
   padding: 20px;
-  border: 2px solid black;
-  margin: 10px;
+  border: 1px solid black;
+  border-radius: 20px;
+  margin: 20px;
+  box-shadow: 0 0 20px #2c2c2c;
 }
 
 .sub-task {
   padding: 15px;
   border: 1px solid black;
-  margin: 10px;
+  border-radius: 20px;
+  margin: 20px;
+  box-shadow: 0 0 5px #858585;
 }
 
 .high-priority {
-  background: lightcoral;
+  background: #bd2d2d;
 }
 
 .mid-priority {
-  background: lightgoldenrodyellow;
+  background: #47a847;
 }
 
 .low-priority {
-  background: lightskyblue;
+  background: #3e91c5;
 }
 
 .completed-priority {
-  background: lightgray;
+  background: #7e7e7e;
 }
 
 /*# sourceMappingURL=App.css.map */

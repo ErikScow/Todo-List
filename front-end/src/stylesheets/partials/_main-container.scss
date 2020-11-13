@@ -1,4 +1,7 @@
-
+body{
+    color: white;
+    background: #444444;
+}
 
 .main-container{
     @include flex(row nowrap, space-between);
@@ -13,6 +16,7 @@
             font-size: 25px;
             border-bottom: 2px solid black;
             padding: 20px;
+            box-shadow: 0 0 20px rgb(70, 70, 70);
         }
         .tabs-link:hover{
             color:$button-hover;

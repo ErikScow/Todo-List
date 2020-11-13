@@ -157,10 +157,33 @@ const Task = (props) => {
                 <UpdateTaskForm hiddenEdit={hiddenEdit} toggleHiddenEdit={toggleHiddenEdit} task={props.task}/>
                 {
                     props.task.subTasks.map((subTask, i) => {
-                        return <SubTask key={i} subTask={subTask} taskId ={props.task.id} task={props.task}/>
+                        if (subTask.priority === 2 && subTask.status === 0){
+                            return <SubTask priority='high-priority' key={i} subTask={subTask} taskId = {props.task.id} task = {props.task}/>
+                        }
+                    })
+                }
+                {
+                    props.task.subTasks.map((subTask, i) => {
+                        if (subTask.priority === 1 && subTask.status === 0){
+                            return <SubTask priority='mid-priority' key={i} subTask={subTask} taskId = {props.task.id} task = {props.task}/>
+                        }
+                    })
+                }
+                {
+                    props.task.subTasks.map((subTask, i) => {
+                        if (subTask.priority === 0 && subTask.status === 0){
+                            return <SubTask priority='low-priority' key={i} subTask={subTask} taskId = {props.task.id} task = {props.task}/>
+                        }
                     })
                 }
                 <button onClick={toggleHideCompleted}>{hideCompletedButton}</button>
+                {
+                    props.task.subTasks.map((subTask, i) => {
+                        if (subTask.status === 1 && hideCompleted === false){
+                            return <SubTask priority='completed-priority' key={i} subTask={subTask} taskId = {props.task.id} task = {props.task}/>
+                        }
+                    })
+                }
             </div>
         )
     } else {
