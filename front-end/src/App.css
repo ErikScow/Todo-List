@@ -98,8 +98,14 @@ body {
   padding: 20px;
   box-shadow: 0 0 20px #464646;
 }
-.main-container .tabs .tabs-link:hover {
+.main-container .tabs .link-container-inner {
+  text-align: center;
+  font-size: 25px;
+  translate: transform 0.2s;
+}
+.main-container .tabs .link-container-inner:hover {
   color: lightslategrey;
+  transform: scale(1.1);
 }
 .main-container .content-container {
   display: flex;
@@ -115,7 +121,7 @@ body {
   border: 1px solid black;
   border-radius: 20px;
   margin: 20px;
-  box-shadow: 0 0 20px #2c2c2c;
+  box-shadow: 0 0 20px #272727;
 }
 
 .sub-task {
@@ -123,7 +129,7 @@ body {
   border: 1px solid black;
   border-radius: 20px;
   margin: 20px;
-  box-shadow: 0 0 5px #858585;
+  box-shadow: 0 0 3px #3d3d3d;
 }
 
 .high-priority {

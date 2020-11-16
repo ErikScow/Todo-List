@@ -18,8 +18,14 @@ body{
             padding: 20px;
             box-shadow: 0 0 20px rgb(70, 70, 70);
         }
-        .tabs-link:hover{
+        .link-container-inner{
+            text-align: center;
+            font-size: 25px;
+            translate: transform 0.2s;
+        }
+        .link-container-inner:hover{
             color:$button-hover;
+            transform: scale(1.1);
         }
     }
     .content-container{

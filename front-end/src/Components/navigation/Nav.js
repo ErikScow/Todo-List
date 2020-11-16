@@ -27,9 +27,9 @@ const Nav = () => {
         return(
             <div className='tabs'>
                 <div className='links-container'>
-                    <Link className='tabs-link' to="/active">Active</Link>
-                    <Link className='tabs-link' to="/completed">Completed</Link>
-                    <Link className='tabs-link' to="/discarded">Discarded</Link>
+                    <Link className='tabs-link' to="/active"><div className = 'link-container-inner'>Active</div></Link>
+                    <Link className='tabs-link' to="/completed"><div className = 'link-container-inner'>Completed</div></Link>
+                    <Link className='tabs-link' to="/discarded"><div className = 'link-container-inner'>Discarded</div></Link>
                 </div>
             </div>
         )

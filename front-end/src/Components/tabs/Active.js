@@ -6,7 +6,7 @@ import CreateTaskForm from '../task/task-forms/CreateTaskForm'
 const Active = () => {
 
     const [hidden, setHidden] = useState(true)
-    const [buttonValue, setButtonValue] = useState('Add a task')
+    const [buttonValue, setButtonValue] = useState('Create A New Task')
 
     const toggleHidden = () => {
         if (hidden){
@@ -18,7 +18,7 @@ const Active = () => {
 
     useEffect(() => {
         if(hidden){
-            setButtonValue('Add a task')
+            setButtonValue('Create A New Task')
         } else {
             setButtonValue('Cancel')
         }
