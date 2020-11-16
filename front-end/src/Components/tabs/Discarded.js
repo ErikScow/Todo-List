@@ -4,7 +4,7 @@ import TaskContainer from '../task/TasksContainer'
 
 const Discarded = () => {
     return(
-        <div>discarded
+        <div>
             <TaskContainer status={2}/>
         </div>
     )

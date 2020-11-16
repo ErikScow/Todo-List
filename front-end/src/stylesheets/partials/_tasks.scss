@@ -28,3 +28,35 @@
 .completed-priority{
     background: rgb(126, 126, 126);
 }
+
+.task-button{
+    color:$text-color;
+        font-size: 12px;
+        background: none;
+        border: none;
+}
+.task-button:hover{
+    cursor:pointer;
+    color:$button-hover
+}
+
+.status-button{
+    font-size: 0;
+    width: 15px;
+    height: 15px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+div.complete{
+    .line-through{
+        position: absolute;
+        width: 25px;
+
+        border-bottom: 1px solid black;
+        transform:
+        translateY(12px)
+        translateX(-5px)
+        rotate(45deg)
+    }
+}

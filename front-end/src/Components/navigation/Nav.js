@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
-    Link
+    Link,
+    useLocation
 } from 'react-router-dom'
 
 import { useContext } from 'react'
@@ -8,8 +9,33 @@ import { UserContext } from '../../contexts/UserContext'
 
 
 const Nav = () => {
-    const { loggedIn } = useContext(UserContext)
+    const { loggedIn, user } = useContext(UserContext)
     const [loggedInStatus, setLoggedIn] = loggedIn
+    const [userData, setUserData] = user
+
+    const location = useLocation()
+    let activeTab = ''
+    let completedTab = ''
+    let discardedTab = ''
+
+
+        if (location.pathname === '/active'){
+            activeTab = 'current'
+            completedTab = ''
+            discardedTab = ''
+        } else if (location.pathname === '/completed'){
+            activeTab = ''
+            completedTab = 'current'
+            discardedTab = ''
+        } else if (location.pathname === '/discarded'){
+            activeTab = ''
+            completedTab = ''
+            discardedTab = 'current'
+        }
+    
+    const activeClass = `link-container-inner ${activeTab}`
+    const completedClass = `link-container-inner ${completedTab}`
+    const discardedClass = `link-container-inner ${discardedTab}`
 
     if (loggedInStatus === false){
         return(
@@ -27,9 +53,9 @@ const Nav = () => {
         return(
             <div className='tabs'>
                 <div className='links-container'>
-                    <Link className='tabs-link' to="/active"><div className = 'link-container-inner'>Active</div></Link>
-                    <Link className='tabs-link' to="/completed"><div className = 'link-container-inner'>Completed</div></Link>
-                    <Link className='tabs-link' to="/discarded"><div className = 'link-container-inner'>Discarded</div></Link>
+                    <Link className='tabs-link' to="/active"><div className = {activeClass}>Active</div></Link>
+                    <Link className='tabs-link' to="/completed"><div className ={completedClass}>Completed</div></Link>
+                    <Link className='tabs-link' to="/discarded"><div className = {discardedClass}>Discarded</div></Link>
                 </div>
             </div>
         )

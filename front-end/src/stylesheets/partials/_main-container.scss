@@ -27,6 +27,10 @@ body{
             color:$button-hover;
             transform: scale(1.1);
         }
+        .current{
+            color:$button-hover;
+            transform: scale(1.1);
+        }
     }
     .content-container{
         @include flex(column nowrap, center);

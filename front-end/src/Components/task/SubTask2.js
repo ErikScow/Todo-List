@@ -62,7 +62,7 @@ const Task = (props) => {
             setEditButtonValue('Cancel')
         }
     }, [hiddenEdit])
-
+    
     useEffect(() => {
             if(props.subTask2.status === 0){
                 setStatusButtonValue('Finish Task')
@@ -73,12 +73,20 @@ const Task = (props) => {
             }
         }, [props.subTask2.status])
 
+    let status = ''
+    if(props.subTask2.status === 0){
+        status = 'incomplete'
+    } else if (props.subTask2.status === 1){
+        status = 'complete'
+    } 
+
     const className = `sub-task ${props.priority}`
+    const statusClass = `task-button status-button ${status}`
     return(
         <div className={className}>
-            <button onClick={changeTaskStatus}>{statusButtonValue}</button>
+            <div className ={status}><div className='line-through'></div><button className={statusClass}onClick={changeTaskStatus}>{statusButtonValue}</button></div>
             <h5>{props.subTask2.task_name}</h5>
-            <button onClick={toggleHiddenEdit}>{editButtonValue}</button>
+            <button className='task-button'onClick={toggleHiddenEdit}>{editButtonValue}</button>
             <UpdateSubTask2Form hiddenEdit={hiddenEdit} toggleHiddenEdit={toggleHiddenEdit} task={props.task} subTask={props.subTask} subTask2={props.subTask2}/>
         </div>
     )

@@ -69,6 +69,7 @@ table {
   border: none;
 }
 .top-nav button:hover {
+  cursor: pointer;
   color: lightslategrey;
 }
 
@@ -104,6 +105,10 @@ body {
   translate: transform 0.2s;
 }
 .main-container .tabs .link-container-inner:hover {
+  color: lightslategrey;
+  transform: scale(1.1);
+}
+.main-container .tabs .current {
   color: lightslategrey;
   transform: scale(1.1);
 }
@@ -146,6 +151,33 @@ body {
 
 .completed-priority {
   background: #7e7e7e;
+}
+
+.task-button {
+  color: white;
+  font-size: 12px;
+  background: none;
+  border: none;
+}
+
+.task-button:hover {
+  cursor: pointer;
+  color: lightslategrey;
+}
+
+.status-button {
+  font-size: 0;
+  width: 15px;
+  height: 15px;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+
+div.complete .line-through {
+  position: absolute;
+  width: 25px;
+  border-bottom: 1px solid black;
+  transform: translateY(12px) translateX(-5px) rotate(45deg);
 }
 
 /*# sourceMappingURL=App.css.map */

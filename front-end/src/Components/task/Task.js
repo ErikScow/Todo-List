@@ -149,10 +149,10 @@ const Task = (props) => {
     if (props.task.status === 2){
         return(
             <div className={className}>
-                <button onClick={discardTask}>{discardButtonValue}</button>
+                <button className='task-button'onClick={discardTask}>{discardButtonValue}</button>
                 <h3>{props.task.task_name}</h3>
-                <button onClick={toggleHidden}>{CreateButtonValue}</button>
-                <button onClick={toggleHiddenEdit}>{editButtonValue}</button>
+                <button className='task-button'onClick={toggleHidden}>{CreateButtonValue}</button>
+                <button className='task-button'onClick={toggleHiddenEdit}>{editButtonValue}</button>
                 <CreateSubTaskForm taskId ={props.task.id} hidden={hidden} toggleHidden={toggleHidden}/>
                 <UpdateTaskForm hiddenEdit={hiddenEdit} toggleHiddenEdit={toggleHiddenEdit} task={props.task}/>
                 {
@@ -176,7 +176,7 @@ const Task = (props) => {
                         }
                     })
                 }
-                <button onClick={toggleHideCompleted}>{hideCompletedButton}</button>
+                <button className='task-button'onClick={toggleHideCompleted}>{hideCompletedButton}</button>
                 {
                     props.task.subTasks.map((subTask, i) => {
                         if (subTask.status === 1 && hideCompleted === false){
@@ -189,11 +189,13 @@ const Task = (props) => {
     } else {
         return(
             <div className={className}>
-                <button onClick={changeTaskStatus}>{statusButtonValue}</button>
-                <button onClick={discardTask}>{discardButtonValue}</button>
+
+                <button className='task-button status-button'onClick={changeTaskStatus}>{statusButtonValue}</button>
                 <h3>{props.task.task_name}</h3>
-                <button onClick={toggleHidden}>{CreateButtonValue}</button>
-                <button onClick={toggleHiddenEdit}>{editButtonValue}</button>
+
+                <button className='task-button'onClick={discardTask}>{discardButtonValue}</button>
+                <button className='task-button'onClick={toggleHidden}>{CreateButtonValue}</button>
+                <button className='task-button'onClick={toggleHiddenEdit}>{editButtonValue}</button>
                 <CreateSubTaskForm taskId ={props.task.id} hidden={hidden} toggleHidden={toggleHidden}/>
                 <UpdateTaskForm hiddenEdit={hiddenEdit} toggleHiddenEdit={toggleHiddenEdit} task={props.task}/>
                 {
@@ -217,7 +219,7 @@ const Task = (props) => {
                         }
                     })
                 }
-                <button onClick={toggleHideCompleted}>{hideCompletedButton}</button>
+                <button className='task-button'onClick={toggleHideCompleted}>{hideCompletedButton}</button>
                 {
                     props.task.subTasks.map((subTask, i) => {
                         if (subTask.status === 1 && hideCompleted === false){

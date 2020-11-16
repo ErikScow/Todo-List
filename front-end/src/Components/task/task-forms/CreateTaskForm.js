@@ -70,7 +70,6 @@ const CreateTaskForm = (props) => {
         axiosWithAuth().post(`http://localhost:5000/api/users/${userData.id}/tasks`, input)
             .then((res) => {
                 res.data = {...res.data, subTasks: []} //add 'fake' subTasks array to state temporarily bc it wont be added to the task data until it is retrieved from the db itself, and we dont want to do another api call right now
-                console.log(res)
                 setUserData({
                     ...userData, 
                     tasks:[
