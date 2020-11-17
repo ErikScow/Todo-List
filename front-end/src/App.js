@@ -30,7 +30,6 @@ function App() {
         user : [user, setUser]
         }}>
         <TopNav/>
-        <div className='main-container'>
           <Nav/>
           <div className='content-container'>
             <Switch>
@@ -43,7 +42,6 @@ function App() {
             </Switch>
           </div>
           
-        </div>
         
       </UserContext.Provider>
     </Router>

@@ -1,4 +1,5 @@
 .task{
+    text-shadow: 1px 1px rgb(39, 39, 39);
     padding:20px;
     border: 1px solid black;
     border-radius: 20px;
@@ -9,8 +10,8 @@
     padding: 15px;
     border: 1px solid black;
     border-radius: 20px;
-    margin: 20px;
-    box-shadow:0 0 3px rgb(61, 61, 61) ;
+    margin: 10px;
+    box-shadow:0 0 5px rgb(61, 61, 61) ;
 }
 
 .high-priority{
@@ -31,9 +32,12 @@
 
 .task-button{
     color:$text-color;
-        font-size: 12px;
-        background: none;
-        border: none;
+    font-size: 12px;
+    background: none;
+    padding: 0;
+    border: none;
+    border-radius: none;
+    text-shadow: 1px 1px rgb(39, 39, 39)
 }
 .task-button:hover{
     cursor:pointer;
@@ -46,17 +50,55 @@
     height: 15px;
     border: 1px solid black;
     border-radius: 50%;
+    box-shadow: 1px 1px rgb(39, 39, 39)
 }
 
 div.complete{
     .line-through{
+        cursor: pointer;
         position: absolute;
         width: 25px;
-
         border-bottom: 1px solid black;
         transform:
-        translateY(12px)
+        translateY(-8px)
         translateX(-5px)
-        rotate(45deg)
+        rotate(45deg);
+        box-shadow: 1px 1px rgb(39, 39, 39)
     }
+}
+
+.task-data{
+    @include flex(column nowrap, inline);
+    padding: 0 10px 10px 10px;
+    .top-row{
+        @include flex(row nowrap, space-between);
+        .main-info{
+            @include flex(row nowrap, space-between);
+            align-items: center;
+            h3{
+                font-size: 25px;
+                padding: 0px 0 0px 10px;
+            }
+            h2{
+                font-size: 20px;
+                padding: 0px 0 0px 10px;
+            }
+        }
+    }
+    .description{
+        padding: 15px 0;
+
+    }
+    .bottom-row{
+        @include flex(row nowrap, space-between);
+        .secondary-buttons{
+            @include flex(row nowrap, space-between);
+            width: 100px;
+        }
+    }
+    
+}
+
+.hide-completed-button{
+    margin-left: 10px;
 }

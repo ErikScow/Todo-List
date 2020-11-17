@@ -3,39 +3,41 @@ body{
     background: #444444;
 }
 
-.main-container{
-    @include flex(row nowrap, space-between);
-    .tabs{
-        width: 20%;
-        .links-container{
-            @include flex(column nowrap, inline);
-        }
-        .tabs-link{
-            color: $text-color;
-            text-decoration: none;
-            font-size: 25px;
-            border-bottom: 2px solid black;
-            padding: 20px;
-            box-shadow: 0 0 20px rgb(70, 70, 70);
-        }
-        .link-container-inner{
-            text-align: center;
-            font-size: 25px;
-            translate: transform 0.2s;
-        }
-        .link-container-inner:hover{
-            color:$button-hover;
-            transform: scale(1.1);
-        }
-        .current{
-            color:$button-hover;
-            transform: scale(1.1);
-        }
+.tabs{
+    position: fixed;
+    top:70px;
+    left:0;
+    width: 235px;
+    margin-top: 5px;
+    .links-container{
+        height: 250px;
+        @include flex(column nowrap, space-evenly);
+        
     }
-    .content-container{
-        @include flex(column nowrap, center);
-        width: 80%;
-        border-left: 2px solid black;
+    .tabs-link{
+        color: $text-color;
+        text-decoration: none;
+        font-size: 25px;
+        border: 2px solid black;
+        border-radius:18px;
         padding: 20px;
+        margin:0 0 0 10px;
     }
+    .link-container-inner{
+        text-align: center;
+        font-size: 25px;
+        translate: transform 0.2s;
+    }
+    .tabs-link:hover{
+        color:$button-hover;
+    }
+    .current{
+        transform: scale(1.05);
+    }
+}
+.content-container{
+    @include flex(column nowrap, center);
+    padding: 20px;
+    margin-top: 70px;
+    margin-left: 235px;
 }

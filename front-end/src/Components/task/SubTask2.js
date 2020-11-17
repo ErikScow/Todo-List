@@ -12,8 +12,10 @@ const Task = (props) => {
     const [hiddenEdit, setHiddenEdit] = useState(true)
     const[statusButtonValue, setStatusButtonValue] = useState('Finish Task')
     const [editButtonValue, setEditButtonValue] = useState('Edit')
+    const [toggled, setToggled] = useState(false)
 
     const changeTaskStatus = () => {
+        setToggled(true)
         let update = {}
         if (props.subTask2.status === 0){
             update.status = 1
@@ -74,7 +76,7 @@ const Task = (props) => {
         }, [props.subTask2.status])
 
     let status = ''
-    if(props.subTask2.status === 0){
+    if(props.subTask2.status === 0 ){
         status = 'incomplete'
     } else if (props.subTask2.status === 1){
         status = 'complete'
@@ -84,7 +86,7 @@ const Task = (props) => {
     const statusClass = `task-button status-button ${status}`
     return(
         <div className={className}>
-            <div className ={status}><div className='line-through'></div><button className={statusClass}onClick={changeTaskStatus}>{statusButtonValue}</button></div>
+            <div className ={status}><button className={statusClass}onClick={changeTaskStatus}>{statusButtonValue}</button><div className='line-through' onClick={changeTaskStatus}></div></div>
             <h5>{props.subTask2.task_name}</h5>
             <button className='task-button'onClick={toggleHiddenEdit}>{editButtonValue}</button>
             <UpdateSubTask2Form hiddenEdit={hiddenEdit} toggleHiddenEdit={toggleHiddenEdit} task={props.task} subTask={props.subTask} subTask2={props.subTask2}/>

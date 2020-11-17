@@ -44,7 +44,6 @@ const UpdateTaskForm = (props) => {
                 [e.target.name]: null
             })
         }
-        console.log(input)
     }
 
     const submitHandler = e => {

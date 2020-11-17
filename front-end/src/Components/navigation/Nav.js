@@ -33,9 +33,9 @@ const Nav = () => {
             discardedTab = 'current'
         }
     
-    const activeClass = `link-container-inner ${activeTab}`
-    const completedClass = `link-container-inner ${completedTab}`
-    const discardedClass = `link-container-inner ${discardedTab}`
+    const activeClass = `tabs-link ${activeTab}`
+    const completedClass = `tabs-link ${completedTab}`
+    const discardedClass = `tabs-link ${discardedTab}`
 
     if (loggedInStatus === false){
         return(
@@ -53,9 +53,9 @@ const Nav = () => {
         return(
             <div className='tabs'>
                 <div className='links-container'>
-                    <Link className='tabs-link' to="/active"><div className = {activeClass}>Active</div></Link>
-                    <Link className='tabs-link' to="/completed"><div className ={completedClass}>Completed</div></Link>
-                    <Link className='tabs-link' to="/discarded"><div className = {discardedClass}>Discarded</div></Link>
+                    <Link className={activeClass} to="/active"><div className = 'link-container-inner'>Active</div></Link>
+                    <Link className={completedClass} to="/completed"><div className = 'link-container-inner'>Completed</div></Link>
+                    <Link className={discardedClass} to="/discarded"><div className = 'link-container-inner'>Discarded</div></Link>
                 </div>
             </div>
         )
