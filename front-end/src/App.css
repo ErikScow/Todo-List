@@ -167,7 +167,7 @@ body {
   background: none;
   padding: 0;
   border: none;
-  border-radius: none;
+  border-radius: 0;
   text-shadow: 1px 1px #272727;
 }
 
@@ -212,14 +212,21 @@ div.complete .line-through {
   align-items: center;
 }
 .task-data .top-row .main-info h3 {
+  font-size: 30px;
+  padding: 0px 0 0px 10px;
+}
+.task-data .top-row .main-info .discarded-h3 {
+  padding-left: 0;
+}
+.task-data .top-row .main-info h2 {
   font-size: 25px;
   padding: 0px 0 0px 10px;
 }
-.task-data .top-row .main-info h2 {
-  font-size: 20px;
-  padding: 0px 0 0px 10px;
+.task-data .top-row .time-frames {
+  font-size: 18px;
 }
 .task-data .description {
+  font-size: 20px;
   padding: 15px 0;
 }
 .task-data .bottom-row {
@@ -236,6 +243,51 @@ div.complete .line-through {
 
 .hide-completed-button {
   margin-left: 10px;
+}
+
+.backdrop {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  color: white;
+  position: fixed;
+  z-index: 500;
+  background-color: #363636;
+  width: 64%;
+  height: 50%;
+  left: 18%;
+  top: 15%;
+  transition: all 0.3s ease-out;
+}
+.modal .top-row {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.modal .top-row h3 {
+  font-size: 30px;
+}
+.modal .top-row button {
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  padding: 10px;
+  font-size: 20px;
+}
+.modal .top-row button:hover {
+  cursor: pointer;
+  background: #bd2d2d;
+}
+.modal .top-row button:hover span {
+  transform: scale(1.05);
+  translate: transform 0.2s;
 }
 
 /*# sourceMappingURL=App.css.map */

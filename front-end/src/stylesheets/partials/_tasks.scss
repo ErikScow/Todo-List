@@ -36,7 +36,7 @@
     background: none;
     padding: 0;
     border: none;
-    border-radius: none;
+    border-radius: 0;
     text-shadow: 1px 1px rgb(39, 39, 39)
 }
 .task-button:hover{
@@ -76,16 +76,23 @@ div.complete{
             @include flex(row nowrap, space-between);
             align-items: center;
             h3{
+                font-size: 30px;
+                padding: 0px 0 0px 10px;
+            }
+            .discarded-h3{
+                padding-left: 0;
+            }
+            h2{
                 font-size: 25px;
                 padding: 0px 0 0px 10px;
             }
-            h2{
-                font-size: 20px;
-                padding: 0px 0 0px 10px;
-            }
+        }
+        .time-frames{
+            font-size: 18px;
         }
     }
     .description{
+        font-size: 20px;
         padding: 15px 0;
 
     }
@@ -98,6 +105,7 @@ div.complete{
     }
     
 }
+
 
 .hide-completed-button{
     margin-left: 10px;

@@ -86,9 +86,37 @@ const Task = (props) => {
     const statusClass = `task-button status-button ${status}`
     return(
         <div className={className}>
-            <div className ={status}><button className={statusClass}onClick={changeTaskStatus}>{statusButtonValue}</button><div className='line-through' onClick={changeTaskStatus}></div></div>
-            <h5>{props.subTask2.task_name}</h5>
-            <button className='task-button'onClick={toggleHiddenEdit}>{editButtonValue}</button>
+            <div className='task-data'>
+                <div className='top-row'>
+                    <div className='main-info'>
+                        <div className ={status}>
+                            <button className={statusClass}onClick={changeTaskStatus}>{statusButtonValue}</button>
+                            <div className='line-through' onClick={changeTaskStatus}></div>
+                        </div>
+                        <h2>{props.subTask2.task_name}</h2>
+                    </div>
+                    
+                    <div className='time-frames'>
+                        <p>Start: {props.subTask2.created}</p>
+                        <p>Finish: {props.subTask2.complete_by}</p>
+                    </div>
+                </div>
+                
+
+                
+
+                
+                <p className='description'>{props.subTask2.task_description}</p>
+                <div className ='bottom-row'>
+                
+                    <div></div>
+                    <button className='task-button'onClick={toggleHiddenEdit}>{editButtonValue}</button>
+                    
+                </div>
+                
+
+                
+            </div>
             <UpdateSubTask2Form hiddenEdit={hiddenEdit} toggleHiddenEdit={toggleHiddenEdit} task={props.task} subTask={props.subTask} subTask2={props.subTask2}/>
         </div>
     )
