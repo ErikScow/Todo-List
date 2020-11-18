@@ -12,20 +12,30 @@
     color:white;
     position: fixed;
     z-index: 500;
-    background-color: rgb(54, 54, 54);
-    width: 64%;
-    height: 50%;
-    left: 18%;
-    top: 15%;
+    background-color: #313131;
+    width: 48%;
+    height: 75%;
+    left: 26%;
+    top: 11%;
+    border-radius: 10px;
     transition: all 0.3s ease-out;
     .top-row{
+        background-color: #444;
+        border-bottom: 2px solid black;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
         @include flex(row nowrap, space-between);
         h3{
             font-size: 30px;
+            padding: 10px 20px;
         } 
         button{
+            font-family:Arial, Helvetica, sans-serif ;
             color:white;
             background-color: rgba(0,0,0,0.0);
+            border-top-right-radius: 10px;
+            height:51px;
+            width:51px;
             border: none;
             padding: 10px;
             font-size: 20px;
@@ -39,5 +49,53 @@
             background: rgb(189, 45, 45);
         }
     }
-    
+    form{
+        padding: 20px;
+        height: 80%;
+        @include flex(column nowrap, space-around);
+        label{
+            margin:0 auto;
+            font-size: 18px;
+            padding-bottom: 25px;
+        }
+        input{
+            display:block;
+            background: rgb(224, 224, 224);
+            border-radius: 5px;
+        }
+        .radio-container{
+            width: 152px;
+            margin-top: 10px;
+            display:flex;
+            input{
+                margin-right: 30px;
+            }
+            p{  
+                width: 50px;
+                text-align: left;
+                padding: 0;
+            }
+        }
+        button{
+            
+            width: 100px;
+            margin:0 auto;
+        }
+        .form-error{
+            height:0;
+            color:rgb(255, 0, 0);
+        }
+        .form-button{
+            color: black;
+            font-size: 12px;
+            background: rgb(212, 212, 212);
+            padding: 4px 7px;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        .form-button:hover{
+            cursor:pointer;
+            color:$button-hover
+        }
+    }
 }

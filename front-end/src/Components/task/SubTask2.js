@@ -91,7 +91,6 @@ const Task = (props) => {
                     <div className='main-info'>
                         <div className ={status}>
                             <button className={statusClass}onClick={changeTaskStatus}>{statusButtonValue}</button>
-                            <div className='line-through' onClick={changeTaskStatus}></div>
                         </div>
                         <h2>{props.subTask2.task_name}</h2>
                     </div>

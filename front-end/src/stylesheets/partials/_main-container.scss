@@ -1,6 +1,7 @@
 body{
     color: white;
-    background: #444444;
+    background: #242424;
+    font-family: sans-serif;
 }
 
 .tabs{
@@ -16,6 +17,7 @@ body{
     }
     .tabs-link{
         color: $text-color;
+        background: #444444;
         text-decoration: none;
         font-size: 25px;
         border: 2px solid black;
@@ -40,4 +42,8 @@ body{
     padding: 20px;
     margin-top: 70px;
     margin-left: 235px;
-}
+    #create-task-button{
+        margin-left:20px;
+        }
+    }
+

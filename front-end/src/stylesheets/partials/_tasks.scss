@@ -31,13 +31,12 @@
 }
 
 .task-button{
-    color:$text-color;
+    color: black;
     font-size: 12px;
-    background: none;
-    padding: 0;
-    border: none;
-    border-radius: 0;
-    text-shadow: 1px 1px rgb(39, 39, 39)
+    background: rgb(212, 212, 212);
+    padding: 4px 7px;
+    border: 1px solid black;
+    border-radius: 5px;
 }
 .task-button:hover{
     cursor:pointer;
@@ -45,25 +44,16 @@
 }
 
 .status-button{
+    background: none;
     font-size: 0;
     width: 15px;
     height: 15px;
     border: 1px solid black;
     border-radius: 50%;
-    box-shadow: 1px 1px rgb(39, 39, 39)
-}
+    box-shadow: 1px 1px rgb(39, 39, 39);
 
-div.complete{
-    .line-through{
-        cursor: pointer;
-        position: absolute;
-        width: 25px;
-        border-bottom: 1px solid black;
-        transform:
-        translateY(-8px)
-        translateX(-5px)
-        rotate(45deg);
-        box-shadow: 1px 1px rgb(39, 39, 39)
+    &.complete{
+        background: rgba(0,0,0,0.4)
     }
 }
 
@@ -100,7 +90,7 @@ div.complete{
         @include flex(row nowrap, space-between);
         .secondary-buttons{
             @include flex(row nowrap, space-between);
-            width: 100px;
+            width: 150px;
         }
     }
     

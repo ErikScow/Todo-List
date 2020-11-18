@@ -97,9 +97,17 @@ const CreateSubTask2Form = (props) => {
         return null
     } else {
         return(
+            <div className = 'backdrop-container'>
+                <div className = 'backdrop' onClick={props.toggleHidden}></div>
+                <div className='modal'>
+                    <div className='top-row'>
+                        <h3>Create A New Sub Task</h3>
+                        <button type='button' onClick={props.toggleHidden}><span>X</span></button>
+                    </div>
+                    
             <form onSubmit={submitHandler}>
                 <label>
-                    Sub Task
+                    Sub Task:
                     <input
                         type = 'text'
                         name = 'task_name'
@@ -109,7 +117,7 @@ const CreateSubTask2Form = (props) => {
                     {errors.task_name ? (<p className="form-error">{errors.task_name}</p>) : null}
                 </label>
                 <label>
-                    Description
+                    Description:
                     <input
                         type = 'text'
                         name = 'task_description'
@@ -119,7 +127,7 @@ const CreateSubTask2Form = (props) => {
                     {errors.task_description ? (<p className="form-error">{errors.task_description}</p>) : null}
                 </label>
                 <label>
-                    Start By
+                    Start:
                     <input
                         type = 'text'
                         name = 'created'
@@ -129,7 +137,7 @@ const CreateSubTask2Form = (props) => {
                     {errors.created ? (<p className="form-error">{errors.created}</p>) : null}
                 </label>
                 <label>
-                    Finish By
+                    Finish:
                     <input
                         type = 'text'
                         name = 'complete_by'
@@ -138,18 +146,27 @@ const CreateSubTask2Form = (props) => {
                     
                     {errors.complete_by ? (<p className="form-error">{errors.complete_by}</p>) : null}
                 </label>
-                <label>
-                    Priority
-                    <select name='priority' size='3' onChange={changeHandler}>
-                        <option value='0'>Low</option>
-                        <option value='1'>Neutral</option>
-                        <option value='2'>High</option>
-                    </select>
-                    {errors.priority ? (<p className="form-error">{errors.priority}</p>) : null}
-                </label>
+                <label className = 'outer-radio-container'>
+                        Priority:
+                        <div className='radio-container'>
+                            <input type='radio' name='priority' value='0' onChange={changeHandler}/><p>Low</p>
+                        </div>
+                        <div className='radio-container'>
+                            <input type='radio' name='priority' value='1' onChange={changeHandler}/><p>Neutral</p>
+                        </div>
+                        <div className='radio-container'>
+                            <input type='radio' name='priority' value='2' onChange={changeHandler}/><p>High</p>
+                        </div>
+                        
+                        
+                        
+                        {errors.priority ? (<p className="form-error">{errors.priority}</p>) : null}
+                    </label>
                 <p className="form-error">{apiErrorMessage}</p>
-                <button type='submit' disabled={buttonDisabled}>Create</button>
+                <button type='submit' className='form-button' disabled={buttonDisabled}>Create</button>
             </form>
+            </div>
+            </div>
         )
     }
 }

@@ -111,9 +111,16 @@ const UpdateSubTaskForm = (props) => {
         return null
     } else {
         return(
+            <div className = 'backdrop-container'>
+                <div className = 'backdrop' onClick={props.toggleHiddenEdit}></div>
+                <div className='modal'>
+                    <div className='top-row'>
+                        <h3>Create A New Task</h3>
+                        <button type='button' onClick={props.toggleHiddenEdit}><span>X</span></button>
+                    </div>
             <form onSubmit={submitHandler}>
                 <label>
-                    Task
+                    New Sub Task Name:
                     <input
                         type = 'text'
                         name = 'task_name'
@@ -121,7 +128,7 @@ const UpdateSubTaskForm = (props) => {
                     />
                 </label>
                 <label>
-                    Description
+                    New Description:
                     <input
                         type = 'text'
                         name = 'task_description'
@@ -129,7 +136,7 @@ const UpdateSubTaskForm = (props) => {
                     />
                 </label>
                 <label>
-                    Start By
+                    New Start:
                     <input
                         type = 'text'
                         name = 'created'
@@ -137,25 +144,35 @@ const UpdateSubTaskForm = (props) => {
                     />
                 </label>
                 <label>
-                    Finish By
+                    New Finish:
                     <input
                         type = 'text'
                         name = 'complete_by'
                         onChange = {changeHandler}
                     />
                 </label>
-                <label>
-                    Priority
-                    <select name='priority' size='3' onChange={changeHandler}>
-                        <option value='0'>Low</option>
-                        <option value='1'>Neutral</option>
-                        <option value='2'>High</option>
-                    </select>
-                </label>
+                <label className = 'outer-radio-container'>
+                        New Priority:
+                        <div className='radio-container'>
+                            <input type='radio' name='priority' value='0' onChange={changeHandler}/><p>Low</p>
+                        </div>
+                        <div className='radio-container'>
+                            <input type='radio' name='priority' value='1' onChange={changeHandler}/><p>Neutral</p>
+                        </div>
+                        <div className='radio-container'>
+                            <input type='radio' name='priority' value='2' onChange={changeHandler}/><p>High</p>
+                        </div>
+                        
+                        
+                        
+                        {errors.priority ? (<p className="form-error">{errors.priority}</p>) : null}
+                    </label>
                 <p className="form-error">{apiErrorMessage}</p>
-                <button type='submit' disabled={buttonDisabled}>Update</button>
-                <button type="button" onClick={deleteTask}>Delete Task</button>
+                <button type='submit' className='form-button' disabled={buttonDisabled}>Update</button>
+                <button type="button" className='form-button' onClick={deleteTask}>Delete Task</button>
             </form>
+            </div>
+            </div>
         )
     }
 }

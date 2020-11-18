@@ -82,7 +82,8 @@ table {
 
 body {
   color: white;
-  background: #444444;
+  background: #242424;
+  font-family: sans-serif;
 }
 
 .tabs {
@@ -100,6 +101,7 @@ body {
 }
 .tabs .tabs-link {
   color: white;
+  background: #444444;
   text-decoration: none;
   font-size: 25px;
   border: 2px solid black;
@@ -126,6 +128,9 @@ body {
   padding: 20px;
   margin-top: 70px;
   margin-left: 235px;
+}
+.content-container #create-task-button {
+  margin-left: 20px;
 }
 
 .task {
@@ -162,13 +167,12 @@ body {
 }
 
 .task-button {
-  color: white;
+  color: black;
   font-size: 12px;
-  background: none;
-  padding: 0;
-  border: none;
-  border-radius: 0;
-  text-shadow: 1px 1px #272727;
+  background: #d4d4d4;
+  padding: 4px 7px;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
 .task-button:hover {
@@ -177,6 +181,7 @@ body {
 }
 
 .status-button {
+  background: none;
   font-size: 0;
   width: 15px;
   height: 15px;
@@ -184,14 +189,8 @@ body {
   border-radius: 50%;
   box-shadow: 1px 1px #272727;
 }
-
-div.complete .line-through {
-  cursor: pointer;
-  position: absolute;
-  width: 25px;
-  border-bottom: 1px solid black;
-  transform: translateY(-8px) translateX(-5px) rotate(45deg);
-  box-shadow: 1px 1px #272727;
+.status-button.complete {
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .task-data {
@@ -238,7 +237,7 @@ div.complete .line-through {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  width: 100px;
+  width: 150px;
 }
 
 .hide-completed-button {
@@ -259,24 +258,34 @@ div.complete .line-through {
   color: white;
   position: fixed;
   z-index: 500;
-  background-color: #363636;
-  width: 64%;
-  height: 50%;
-  left: 18%;
-  top: 15%;
+  background-color: #313131;
+  width: 48%;
+  height: 75%;
+  left: 26%;
+  top: 11%;
+  border-radius: 10px;
   transition: all 0.3s ease-out;
 }
 .modal .top-row {
+  background-color: #444;
+  border-bottom: 2px solid black;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
 }
 .modal .top-row h3 {
   font-size: 30px;
+  padding: 10px 20px;
 }
 .modal .top-row button {
+  font-family: Arial, Helvetica, sans-serif;
   color: white;
   background-color: rgba(0, 0, 0, 0);
+  border-top-right-radius: 10px;
+  height: 51px;
+  width: 51px;
   border: none;
   padding: 10px;
   font-size: 20px;
@@ -288,6 +297,56 @@ div.complete .line-through {
 .modal .top-row button:hover span {
   transform: scale(1.05);
   translate: transform 0.2s;
+}
+.modal form {
+  padding: 20px;
+  height: 80%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+}
+.modal form label {
+  margin: 0 auto;
+  font-size: 18px;
+  padding-bottom: 25px;
+}
+.modal form input {
+  display: block;
+  background: #e0e0e0;
+  border-radius: 5px;
+}
+.modal form .radio-container {
+  width: 152px;
+  margin-top: 10px;
+  display: flex;
+}
+.modal form .radio-container input {
+  margin-right: 30px;
+}
+.modal form .radio-container p {
+  width: 50px;
+  text-align: left;
+  padding: 0;
+}
+.modal form button {
+  width: 100px;
+  margin: 0 auto;
+}
+.modal form .form-error {
+  height: 0;
+  color: red;
+}
+.modal form .form-button {
+  color: black;
+  font-size: 12px;
+  background: #d4d4d4;
+  padding: 4px 7px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.modal form .form-button:hover {
+  cursor: pointer;
+  color: lightslategrey;
 }
 
 /*# sourceMappingURL=App.css.map */
