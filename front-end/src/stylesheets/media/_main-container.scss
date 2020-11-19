@@ -1,0 +1,52 @@
+@media(max-width: 950px){
+    .tabs{
+        position: fixed;
+        top:-2px;
+        left: 20%;
+        width:60%;
+        background: #444;
+        margin: 0 auto;
+        z-index:30;
+        @include flex(row nowrap, center);
+        .links-container{
+            @include flex(row nowrap, space-evenly);
+            width: 100%;
+            height: 100%;
+            position: relative;
+            margin-top:9px;
+        }
+        .tabs-link{
+            position: relative;
+            z-index: 300;
+            width: 100px;
+            color: $text-color;
+            background: #444444;
+            text-decoration: none;
+            border: 2px solid black;
+            border-radius:18px;
+            padding: 10px;
+            margin:10px;
+        }
+        .link-container-inner{
+            text-align: center;
+            font-size: 18px;
+            translate: transform 0.2s;
+        }
+        .tabs-link:hover{
+            color:$button-hover;
+        }
+        .current{
+            transform: scale(1.05);
+        }
+    }
+    .content-container{
+        @include flex(column nowrap, center);
+        padding: 20px;
+        margin: 66px 0 0 0;
+        #create-task-button{
+            display:block;
+            width:150px;
+            margin :0 auto;
+            }
+        }
+}

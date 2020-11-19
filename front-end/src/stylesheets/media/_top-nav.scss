@@ -1,0 +1,37 @@
+@media(max-width: 950px){
+
+
+.top-nav{
+    background: #444444;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index: 1;
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 2px solid black;
+    h1{
+        font-size: 30px;
+    }
+    button{
+        color:$text-color;
+        font-size: 18px;
+        background: none;
+        border: none;
+        margin-right: 30px;
+    }
+    button:hover{
+        cursor: pointer;
+        color: $button-hover;
+    }
+    .links-container{
+        @include flex(row nowrap, space-between);
+        align-items: center;
+        width: 20%;
+        
+    }
+}
+}

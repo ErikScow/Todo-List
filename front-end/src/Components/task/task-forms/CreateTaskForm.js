@@ -93,7 +93,7 @@ const CreateTaskForm = (props) => {
                 <div className = 'backdrop' onClick={props.toggleHidden}></div>
                 <div className='modal'>
                     <div className='top-row'>
-                        <h3>Create A New Task</h3>
+                        <h3>Create A Task</h3>
                         <button type='button' onClick={props.toggleHidden}><span>X</span></button>
                     </div>
                     
@@ -102,6 +102,7 @@ const CreateTaskForm = (props) => {
                     <label>
                         Task:
                         <input
+                            className='text-input'
                             type = 'text'
                             name = 'task_name'
                             onChange = {changeHandler}
@@ -112,6 +113,7 @@ const CreateTaskForm = (props) => {
                     <label>
                         Description:
                         <textarea
+                            className='text-input'
                             type = 'text'
                             name = 'task_description'
                             onChange = {changeHandler}
@@ -122,6 +124,7 @@ const CreateTaskForm = (props) => {
                     <label>
                         Start:
                         <input
+                            className='text-input'
                             type = 'text'
                             name = 'created'
                             onChange = {changeHandler}
@@ -132,6 +135,7 @@ const CreateTaskForm = (props) => {
                     <label>
                         Finish:
                         <input
+                            className='text-input'
                             type = 'text'
                             name = 'complete_by'
                             onChange = {changeHandler}

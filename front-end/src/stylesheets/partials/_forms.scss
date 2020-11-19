@@ -13,10 +13,11 @@
     position: fixed;
     z-index: 500;
     background-color: #313131;
-    width: 36%;
+    width: 240px;
     height: 600px;
-    left: 32%;
-    top: 11%;
+    top: 80px;
+    left: 50%;
+    margin-left: -120px;
     border-radius: 10px;
     .top-row{
         background-color: #444;
@@ -25,8 +26,9 @@
         border-top-right-radius: 10px;
         @include flex(row nowrap, space-between);
         h3{
-            font-size: 30px;
+            font-size: 24px;
             padding: 10px 20px;
+            height: 0;
         } 
         button{
             font-family:Arial, Helvetica, sans-serif ;
@@ -68,6 +70,9 @@
             width: 172px;
             resize: none;
         }
+        .text-input{
+            width: 150px;
+        }
         .radio-container{
             width: 152px;
             margin-top: 10px;
@@ -93,8 +98,8 @@
             color:rgb(211, 17, 17);
             background-color: #444;
             position:absolute;
-            top: 122px;
-            left: 220px;
+            top: 121px;
+            left: 98px;
             padding: 4px;
             border-radius: 4px;
             box-shadow: 0 0 5px rgb(39, 39, 39);

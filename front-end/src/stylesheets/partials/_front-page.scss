@@ -3,14 +3,14 @@
     padding: 20% auto 0;
     .front-modal {
         color:white;
-        position: fixed;
-        z-index: 500;
         background-color: #313131;
-        width: 36%;
+        position:relative;
+        width: 240px;
         height: 400px;
-        left: 32%;
-        top: 11%;
+        margin: 0 auto;
+        margin-top: 150px;
         border-radius: 10px;
+        box-shadow: 0 0 5px rgb(31, 31, 31);
         .top-row{
             background-color: #444;
             border-bottom: 2px solid black;
@@ -90,9 +90,9 @@
             .form-error-e{
                 color:rgb(211, 17, 17);
                 background: #444;
+                font-size: 15px;
                 position:absolute;
                 top: 147px;
-                left: 190px;
                 padding: 4px;
                 border-radius: 4px;
                 box-shadow: 0 0 5px rgb(39, 39, 39);
@@ -101,9 +101,9 @@
             .form-error-p{
                 color:rgb(211, 17, 17);
                 background: #444;
+                font-size:15px;
                 position:absolute;
-                top: 246px;
-                left: 190px;
+                top: 243px;
                 padding: 4px;
                 border-radius: 4px;
                 box-shadow: 0 0 5px rgb(39, 39, 39);
