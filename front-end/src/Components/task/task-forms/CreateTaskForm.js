@@ -155,7 +155,7 @@ const CreateTaskForm = (props) => {
                         
                         {errors.priority ? (<p className="form-error">{errors.priority}</p>) : null}
                     </label>
-                    <p className="form-error">{apiErrorMessage}</p>
+                    <p className="api-error">{apiErrorMessage}</p>
                     <button className='form-button' type='submit' disabled={buttonDisabled}>Create</button>
                     
                 </form>

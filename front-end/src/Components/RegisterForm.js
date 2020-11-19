@@ -12,7 +12,7 @@ const validationSchema = yup.object().shape({
         .required('Required'),
     password: yup
         .string()
-        .matches(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/ , "Password should be between 6 and 16 characters, contain at least one lowercase character, one uppercase characer, one number, and one special character")
+        .matches(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/ , "Password should be 6-16 characters, at least one a-z, one A-Z, one 0-9, and one special characer.")
         .required('Required')
 })
 
@@ -83,28 +83,33 @@ const RegisterForm = (props) => {
     }
 
     return(
+        <div className='front-modal'>
+            <div className = 'top-row'>
+                <h3>Sign Up</h3>
+            </div>
         <form onSubmit={submitHandler}>
             <label>
-                Email
+                Email:
                 <input 
                     type="text"
                     name="username"
                     onChange={changeHandler}
                 />
-                {errors.username ? (<p className="form-error">{errors.username}</p>) : null}
+                {errors.username ? (<p className="form-error-e">{errors.username}</p>) : null}
             </label>
             <label>
-                Password
+                Password:
                 <input 
                     type="password"
                     name="password"
                     onChange={changeHandler}
                 />
-                {errors.password ? (<p className="form-error">{errors.password}</p>) : null}
+                {errors.password ? (<p className="form-error-p">{errors.password}</p>) : null}
             </label>
-            <p className="form-error">{apiErrorMessage}</p>
-            <button type="submit" disabled={buttonDisabled}>Sign Up</button>
+            <p className="api-error">{apiErrorMessage}</p>
+            <button className='form-button' type="submit" disabled={buttonDisabled}>Sign Up</button>
         </form>
+        </div>
     )
 }
 

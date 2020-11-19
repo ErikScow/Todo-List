@@ -63,9 +63,15 @@ const LoginForm = () => {
 
 
     return(
+        <div className='front-modal'>
+            <div className = 'top-row'>
+                <h3>Log In</h3>
+            </div>
         <form onSubmit={submitHandler}>
+            
+            
             <label>
-                Email
+                Email:
                 <input 
                     type="text"
                     name="username"
@@ -74,7 +80,7 @@ const LoginForm = () => {
                 {errors.username ? (<p className="form-error">{errors.username}</p>) : null}
             </label>
             <label>
-                Password
+                Password:
                 <input 
                     type="password"
                     name="password"
@@ -82,9 +88,10 @@ const LoginForm = () => {
                 />
                 {errors.password ? (<p className="form-error">{errors.password}</p>) : null}
             </label>
-            <p className="form-error">{apiErrorMessage}</p>
-            <button type="submit" disabled={buttonDisabled}>Log In</button>
+            <p className="api-error">{apiErrorMessage}</p>
+            <button className='form-button' type="submit" disabled={buttonDisabled} className='form-button' >Log In</button>
         </form>
+        </div>
     )
 }
 

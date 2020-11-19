@@ -177,7 +177,7 @@ const UpdateSubTask2Form = (props) => {
                         
                         {errors.priority ? (<p className="form-error">{errors.priority}</p>) : null}
                     </label>
-                <p className="form-error">{apiErrorMessage}</p>
+                <p className="api-error">{apiErrorMessage}</p>
                 <button type='submit' className='form-button'disabled={buttonDisabled}>Update</button>
                 <button type="button" className='form-button'onClick={deleteTask}>Delete Task</button>
             </form>

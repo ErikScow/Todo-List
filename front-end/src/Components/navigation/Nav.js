@@ -42,9 +42,9 @@ const Nav = () => {
             <div className='top-nav'>
                 <h1>My Lists</h1>
                 <div className='links-container'>
-                    <Link to="/"><button>Home</button></Link>
-                    <Link to="/login"><button>Login</button></Link>
-                    <Link to="/register"><button>Sign Up</button></Link>
+                    <Link  to="/"><button>Home</button></Link>
+                    <Link  to="/login"><button>Login</button></Link>
+                    <Link  to="/register"><button>Sign Up</button></Link>
                 </div>
                 
             </div>

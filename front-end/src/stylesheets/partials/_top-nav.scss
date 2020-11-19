@@ -27,6 +27,8 @@
     }
     .links-container{
         @include flex(row nowrap, space-between);
+        align-items: center;
         width: 20%;
+        
     }
 }

@@ -31,11 +31,17 @@ function App() {
         }}>
         <TopNav/>
           <Nav/>
+          <div className = 'front-content-container'>
+            <Switch>
+              <Route exact path="/"></Route>
+              <Route path="/login" component={LoginForm}/>
+              <Route path="/register" component={RegisterForm}/>
+            </Switch>
+          </div>
+          
+            
           <div className='content-container'>
             <Switch>
-                <Route exact path="/"></Route>
-                <Route path="/login" component={LoginForm}/>
-                <Route path="/register" component={RegisterForm}/>
                 <PrivateRoute path="/active" component={Active}/>
                 <PrivateRoute path="/completed" component={Completed}/>
                 <PrivateRoute path="/discarded" component={Discarded}/>
