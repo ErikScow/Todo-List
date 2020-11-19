@@ -1,3 +1,5 @@
+
+
 .top-nav{
     background: #444444;
     position:fixed;
@@ -22,5 +24,9 @@
     button:hover{
         cursor: pointer;
         color: $button-hover;
+    }
+    .links-container{
+        @include flex(row nowrap, space-between);
+        width: 20%;
     }
 }

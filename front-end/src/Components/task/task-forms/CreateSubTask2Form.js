@@ -8,8 +8,7 @@ const validationSchema = yup.object().shape({
         .string()
         .required('Required'),
     task_description: yup
-        .string()
-        .required('Required'),
+        .string(),
     created: yup
         .string(),
     complete_by: yup
@@ -118,7 +117,7 @@ const CreateSubTask2Form = (props) => {
                 </label>
                 <label>
                     Description:
-                    <input
+                    <textarea
                         type = 'text'
                         name = 'task_description'
                         onChange = {changeHandler}

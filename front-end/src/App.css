@@ -79,6 +79,12 @@ table {
   cursor: pointer;
   color: lightslategrey;
 }
+.top-nav .links-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: 20%;
+}
 
 body {
   color: white;
@@ -259,9 +265,9 @@ body {
   position: fixed;
   z-index: 500;
   background-color: #313131;
-  width: 48%;
+  width: 36%;
   height: 75%;
-  left: 26%;
+  left: 32%;
   top: 11%;
   border-radius: 10px;
   transition: all 0.3s ease-out;
@@ -310,10 +316,15 @@ body {
   font-size: 18px;
   padding-bottom: 25px;
 }
-.modal form input {
+.modal form input, .modal form textarea {
+  font-family: Arial, Helvetica, sans-serif;
   display: block;
   background: #e0e0e0;
   border-radius: 5px;
+}
+.modal form textarea {
+  width: 146px;
+  resize: none;
 }
 .modal form .radio-container {
   width: 152px;

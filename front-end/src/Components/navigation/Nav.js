@@ -39,12 +39,14 @@ const Nav = () => {
 
     if (loggedInStatus === false){
         return(
-            <div className=''>
-                <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/login">Login</Link></li>
-                    <li><Link to="/register">Sign Up</Link></li>
-                </ul>
+            <div className='top-nav'>
+                <h1>My Lists</h1>
+                <div className='links-container'>
+                    <Link to="/"><button>Home</button></Link>
+                    <Link to="/login"><button>Login</button></Link>
+                    <Link to="/register"><button>Sign Up</button></Link>
+                </div>
+                
             </div>
             
             

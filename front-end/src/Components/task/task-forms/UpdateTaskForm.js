@@ -117,7 +117,7 @@ const UpdateTaskForm = (props) => {
                 </label>
                 <label>
                     New Description:
-                    <input
+                    <textarea
                         type = 'text'
                         name = 'task_description'
                         onChange = {changeHandler}
