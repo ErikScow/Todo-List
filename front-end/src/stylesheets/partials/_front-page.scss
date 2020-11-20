@@ -5,10 +5,10 @@
         color:white;
         background-color: #313131;
         position:relative;
-        width: 240px;
+        width: 480px;
         height: 400px;
         margin: 0 auto;
-        margin-top: 150px;
+        margin-top: 155px;
         border-radius: 10px;
         box-shadow: 0 0 5px rgb(31, 31, 31);
         .top-row{
@@ -59,25 +59,8 @@
                 background: rgb(224, 224, 224);
                 border-radius: 5px;
             }
-            textarea{
-                width: 172px;
-                resize: none;
-            }
-            .radio-container{
-                width: 152px;
-                margin-top: 10px;
-                display:flex;
-                input{
-                    margin-right: 30px;
-                }
-                p{  
-                    width: 50px;
-                    text-align: left;
-                    padding: 0;
-                }
-            }
             .api-error{
-                color: rgb(211, 17, 17);
+                color: $error-color;
                 text-align:center;
                 padding: 4px;
                 border-radius: 4px;
@@ -88,9 +71,9 @@
                 margin:0 auto;
             }
             .form-error-e{
-                color:rgb(211, 17, 17);
+                color:$error-color;
                 background: #444;
-                font-size: 15px;
+                font-size: $error-font-size;
                 position:absolute;
                 top: 147px;
                 padding: 4px;
@@ -99,9 +82,9 @@
                 margin-right: 10px;
             }
             .form-error-p{
-                color:rgb(211, 17, 17);
+                color:$error-color;
                 background: #444;
-                font-size:15px;
+                font-size: $error-font-size;
                 position:absolute;
                 top: 243px;
                 padding: 4px;

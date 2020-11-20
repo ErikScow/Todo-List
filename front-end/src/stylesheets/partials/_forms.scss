@@ -13,11 +13,11 @@
     position: fixed;
     z-index: 500;
     background-color: #313131;
-    width: 240px;
+    width: 480px;
     height: 600px;
     top: 80px;
     left: 50%;
-    margin-left: -120px;
+    margin-left: -240px;
     border-radius: 10px;
     .top-row{
         background-color: #444;
@@ -27,7 +27,7 @@
         @include flex(row nowrap, space-between);
         h3{
             font-size: 24px;
-            padding: 10px 20px;
+            padding: 13px 20px 10px 20px;
             height: 0;
         } 
         button{
@@ -95,14 +95,14 @@
             margin:0 auto;
         }
         .form-error{
-            color:rgb(211, 17, 17);
+            color:$error-color;
             background-color: #444;
             position:absolute;
             top: 121px;
-            left: 98px;
             padding: 4px;
             border-radius: 4px;
             box-shadow: 0 0 5px rgb(39, 39, 39);
+            font-size:$error-font-size
         }
         .form-button{
             color: black;

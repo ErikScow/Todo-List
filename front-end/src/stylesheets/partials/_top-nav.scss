@@ -28,7 +28,10 @@
     .links-container{
         @include flex(row nowrap, space-between);
         align-items: center;
-        width: 20%;
+        width: 300px;
         
+    }
+    .icon{
+        display:none;
     }
 }
