@@ -3,6 +3,8 @@ import * as yup from 'yup'
 import axiosWithAuth from '../../../axiosWithAuth'
 import { UserContext } from '../../../contexts/UserContext'
 
+import backendUrl from '../../../backendurl'
+
 const validationSchema = yup.object().shape({
     task_name: yup
         .string()
@@ -66,7 +68,7 @@ const CreateTaskForm = (props) => {
     const submitHandler = e => {
         props.toggleHidden()
         e.preventDefault()
-        axiosWithAuth().post(`http://localhost:5000/api/users/${userData.id}/tasks`, input)
+        axiosWithAuth().post(`${backendUrl}/api/users/${userData.id}/tasks`, input)
             .then((res) => {
                 res.data = {...res.data, subTasks: []} //add 'fake' subTasks array to state temporarily bc it wont be added to the task data until it is retrieved from the db itself, and we dont want to do another api call right now
                 setUserData({

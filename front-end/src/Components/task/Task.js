@@ -8,6 +8,8 @@ import UpdateTaskForm from './task-forms/UpdateTaskForm'
 
 import axiosWithAuth from '../../axiosWithAuth'
 
+import backendUrl from '../../backendurl'
+
 
 const Task = (props) => {
     const { user } = useContext(UserContext)
@@ -31,7 +33,7 @@ const Task = (props) => {
             update.status = 0
         }
         
-        axiosWithAuth().put(`http://localhost:5000/api/users/${userData.id}/tasks/${props.task.id}`, update)
+        axiosWithAuth().put(`${backendUrl}/api/users/${userData.id}/tasks/${props.task.id}`, update)
             .then((res) => {
 
                 let userTasks = userData.tasks

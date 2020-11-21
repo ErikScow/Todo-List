@@ -6,6 +6,8 @@ import { useHistory } from 'react-router-dom'
 import axiosWithAuth from '../axiosWithAuth'
 import { UserContext } from '../contexts/UserContext'
 
+import backendUrl from '../backendurl'
+
 const LoginForm = () => {
     const validationSchema = yup.object().shape({
         username: yup
@@ -43,7 +45,7 @@ const LoginForm = () => {
 
     const submitHandler = e => {
         e.preventDefault()
-        axiosWithAuth().post('http://localhost:5000/api/users/login', input)
+        axiosWithAuth().post(`${backendUrl}/api/users/login`, input)
             .then(res => {
                 localStorage.removeItem('token')
                 localStorage.removeItem('user-state')

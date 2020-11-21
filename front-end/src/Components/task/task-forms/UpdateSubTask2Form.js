@@ -2,6 +2,8 @@ import React, { useState, useContext, useEffect } from 'react'
 import axiosWithAuth from '../../../axiosWithAuth'
 import { UserContext } from '../../../contexts/UserContext'
 
+import backendUrl from '../../../backendurl'
+
 const UpdateSubTask2Form = (props) => {
     const { user } = useContext(UserContext)
     const[userData, setUserData] = user
@@ -51,7 +53,7 @@ const UpdateSubTask2Form = (props) => {
         props.toggleHiddenEdit()
         
         
-        axiosWithAuth().put(`http://localhost:5000/api/users/${userData.id}/tasks/${props.task.id}/subTasks/${props.subTask.id}/subTasks2/${props.subTask2.id}`, input)
+        axiosWithAuth().put(`${backendUrl}/api/users/${userData.id}/tasks/${props.task.id}/subTasks/${props.subTask.id}/subTasks2/${props.subTask2.id}`, input)
             .then((res) => {
                 let userTasks = userData.tasks
                 const index = userTasks.findIndex((task) => task.id === props.task.id)
@@ -84,7 +86,7 @@ const UpdateSubTask2Form = (props) => {
 
     const deleteTask = () => {
         props.toggleHiddenEdit()
-        axiosWithAuth().delete(`http://localhost:5000/api/users/${userData.id}/tasks/${props.task.id}/subTasks/${props.subTask.id}/subTasks2/${props.subTask2.id}`)
+        axiosWithAuth().delete(`${backendUrl}/api/users/${userData.id}/tasks/${props.task.id}/subTasks/${props.subTask.id}/subTasks2/${props.subTask2.id}`)
             .then((res) => {
                 let userTasks = userData.tasks
                 const index = userTasks.findIndex((task) => task.id === props.task.id)

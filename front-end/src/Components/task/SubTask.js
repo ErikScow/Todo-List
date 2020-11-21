@@ -7,6 +7,8 @@ import SubTask2 from './SubTask2'
 import CreateSubTask2Form from './task-forms/CreateSubTask2Form'
 import UpdateSubTaskForm from './task-forms/UpdateSubTaskForm'
 
+import backendUrl from '../../backendurl'
+
 const Task = (props) => {
     const { user } = useContext(UserContext)
     const[userData, setUserData] = user
@@ -28,7 +30,7 @@ const Task = (props) => {
             update.status = 0
         }
         
-        axiosWithAuth().put(`http://localhost:5000/api/users/${userData.id}/tasks/${props.task.id}/subTasks/${props.subTask.id}/`, update)
+        axiosWithAuth().put(`${backendUrl}/api/users/${userData.id}/tasks/${props.task.id}/subTasks/${props.subTask.id}/`, update)
             .then((res) => {
 
                 let userTasks = userData.tasks

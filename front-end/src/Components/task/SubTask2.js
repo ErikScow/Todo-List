@@ -5,6 +5,8 @@ import { UserContext } from '../../contexts/UserContext'
 
 import UpdateSubTask2Form from './task-forms/UpdateSubTask2Form'
 
+import backendUrl from '../../backendurl'
+
 const Task = (props) => {
     const { user } = useContext(UserContext)
     const[userData, setUserData] = user
@@ -22,7 +24,7 @@ const Task = (props) => {
         } else if (props.subTask2.status === 1){
             update.status = 0
         }
-        axiosWithAuth().put(`http://localhost:5000/api/users/${userData.id}/tasks/${props.task.id}/subTasks/${props.subTask.id}/subTasks2/${props.subTask2.id}`, update)
+        axiosWithAuth().put(`${backendUrl}/api/users/${userData.id}/tasks/${props.task.id}/subTasks/${props.subTask.id}/subTasks2/${props.subTask2.id}`, update)
             .then((res) => {
                 let userTasks = userData.tasks
                 const index = userTasks.findIndex((task) => task.id === props.task.id)

@@ -4,6 +4,8 @@ import axiosWithAuth from '../axiosWithAuth'
 
 import { UserContext } from '../contexts/UserContext'
 
+import backendUrl from '../backendurl'
+
 const PrivateRoute = ({ component: Component, ...rest }) => {
     const { user, loggedIn } = useContext(UserContext)
     
@@ -33,7 +35,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
         if (stateChecked){
             const token = localStorage.getItem('token')
             if (token && userData.id){
-            axiosWithAuth().get(`http://localhost:5000/api/users/${userData.id}`)
+            axiosWithAuth().get(`${backendUrl}/api/users/${userData.id}`)
                 .then(() => {
                     setAuthenticated(true)
                     setLoggedIn(true)

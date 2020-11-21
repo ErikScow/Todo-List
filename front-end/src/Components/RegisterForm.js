@@ -5,6 +5,8 @@ import { useHistory } from 'react-router-dom'
 import axiosWithAuth from '../axiosWithAuth'
 import { UserContext } from '../contexts/UserContext'
 
+import backendUrl from '../backendurl'
+
 const validationSchema = yup.object().shape({
     username: yup
         .string()
@@ -61,7 +63,7 @@ const RegisterForm = (props) => {
 
     const submitHandler = e => {
         e.preventDefault()
-        axiosWithAuth().post('http://localhost:5000/api/users/register', input)
+        axiosWithAuth().post(`${backendUrl}/api/users/register`, input)
             .then(() => {
                 axiosWithAuth().post('http://localhost:5000/api/users/login', input)
                     .then(res => {
