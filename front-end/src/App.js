@@ -6,15 +6,15 @@ import {
   Route,
 } from 'react-router-dom'
 
-import PrivateRoute from './components/PrivateRoute'
-import TopNav from './components/navigation/TopNav'
-import Nav from './components/navigation/Nav'
-import RegisterForm from './components/RegisterForm'
-import LoginForm from './components/LoginForm'
+import PrivateRoute from './Components/PrivateRoute'
+import TopNav from './Components/navigation/TopNav'
+import Nav from './Components/navigation/Nav'
+import RegisterForm from './Components/RegisterForm'
+import LoginForm from './Components/LoginForm'
 
-import Active from './components/tabs/Active'
-import Completed from './components/tabs/Completed'
-import Discarded from './components/tabs/Discarded'
+import Active from './Components/tabs/Active'
+import Completed from './Components/tabs/Completed'
+import Discarded from './Components/tabs/Discarded'
 
 import { UserContext } from './contexts/UserContext'
 
