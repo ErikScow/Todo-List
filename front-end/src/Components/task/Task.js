@@ -61,7 +61,7 @@ const Task = (props) => {
             update.status = 2
         }
         
-        axiosWithAuth().put(`http://localhost:5000/api/users/${userData.id}/tasks/${props.task.id}`, update)
+        axiosWithAuth().put(`${backendUrl}/api/users/${userData.id}/tasks/${props.task.id}`, update)
             .then((res) => {
 
                 let userTasks = userData.tasks
