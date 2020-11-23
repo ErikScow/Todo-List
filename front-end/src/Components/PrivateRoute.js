@@ -20,7 +20,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     //data is saved to local storage in login request, then here is set to state if state isnt there. This is here so that when a user refreshes page they wont be logged out and the page they are on doenst change. the loggout component will delete all localstorage
     useEffect(() => {
         if (!userData.id){
-            const data = localStorage.getItem('user-state')
+            const data = sessionStorage.getItem('user-state')
             setUserData(JSON.parse(data))
             setStateChecked(true)
         } else {
@@ -33,7 +33,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     useEffect(() => {
         //only runs this code after we have verified state is present and or reset it from localstorage. this is here to prevent the component from unmounting before the token is verified
         if (stateChecked){
-            const token = localStorage.getItem('token')
+            const token = sessionStorage.getItem('token')
             if (token && userData.id){
             axiosWithAuth().get(`${backendUrl}/api/users/${userData.id}`)
                 .then(() => {
@@ -42,7 +42,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
                 })
                 .catch(() => {
                     setAuthenticated(false)
-                    localStorage.removeItem('token')
+                    sessionStorage.removeItem('token')
                 })
                 .then(() => {
                     setCompleted(true)

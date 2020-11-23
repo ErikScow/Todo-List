@@ -67,10 +67,10 @@ const RegisterForm = (props) => {
             .then(() => {
                 axiosWithAuth().post('http://localhost:5000/api/users/login', input)
                     .then(res => {
-                        localStorage.removeItem('token')
-                        localStorage.removeItem('user-state')
-                        localStorage.setItem('token', res.data.token)
-                        localStorage.setItem('user-state', JSON.stringify(res.data.user))
+                        sessionStorage.removeItem('token')
+                        sessionStorage.removeItem('user-state')
+                        sessionStorage.setItem('token', res.data.token)
+                        sessionStorage.setItem('user-state', JSON.stringify(res.data.user))
                         setUserData(res.data.user)
                         history.push('/active')
                     })
