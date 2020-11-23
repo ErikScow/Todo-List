@@ -29,8 +29,8 @@ const UpdateTaskForm = (props) => {
     },[input])
 
     useEffect(() => {
-        localStorage.removeItem('user-state')
-        localStorage.setItem('user-state', JSON.stringify(userData))
+        sessionStorage.removeItem('user-state')
+        sessionStorage.setItem('user-state', JSON.stringify(userData))
     }, [userData])
     
     const changeHandler = e => {

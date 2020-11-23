@@ -30,8 +30,8 @@ const CreateSubTaskForm = (props) => {
     const [apiErrorMessage, setApiErrorMessage] = useState(null)
 
     useEffect(() => {
-        localStorage.removeItem('user-state')
-        localStorage.setItem('user-state', JSON.stringify(userData))
+        sessionStorage.removeItem('user-state')
+        sessionStorage.setItem('user-state', JSON.stringify(userData))
     }, [userData])
 
     useEffect(() => {
