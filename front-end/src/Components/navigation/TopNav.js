@@ -17,8 +17,8 @@ const TopNav = () => {
     const history = useHistory()
 
     const logOut = () => {
-        localStorage.removeItem('token')
-        localStorage.removeItem('user-data')
+        sessionStorage.removeItem('token')
+        sessionStorage.removeItem('user-data')
         setLoggedIn(false)
         history.push('/')
         
