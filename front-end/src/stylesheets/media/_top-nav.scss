@@ -48,11 +48,11 @@
         display:flex;
         flex-flow:column nowrap;
         justify-content: space-between;
-        padding: 20px;
-        padding-bottom:0;
+        padding: 10px 20px 10px 20px;
+        padding-bottom: 0;
         border: none;
         &.hidden{
-            padding-bottom: 20px;
+            padding-bottom: 10px;
             .wrapper{
                 padding-bottom: 0;
             }
@@ -60,7 +60,7 @@
         .wrapper{
             width: 100%;
             @include flex(row, space-between);
-            padding-bottom: 20px;
+            padding-bottom: 10px;
         }
         h1{
             font-size: 30px;

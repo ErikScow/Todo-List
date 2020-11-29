@@ -2,11 +2,23 @@
     .modal{
         width: 360px;
         margin-left: -180px;
+        .top-row{
+            width: 360px;
+        }
     }
 }
 @media(max-width:660px){
     .modal{
         width:240px;
         margin-left: -120px;
+        .top-row{
+            width: 240px;
+        }
+    }
+}
+
+@media(max-height: 600px){
+    .modal{
+        bottom: 10%;
     }
 }
