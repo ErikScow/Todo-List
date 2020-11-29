@@ -49,15 +49,18 @@
 
             label{
                 margin:0 auto;
+                width: 150px;
                 font-size: 18px;
                 padding-bottom: 25px;
             }
             input, textarea{
                 font-family: Arial, Helvetica, sans-serif;
                 display:block;
+                width: 150px;
                 background: rgb(224, 224, 224);
                 border-radius: 5px;
                 border: none;
+                padding: 0;
                 margin-bottom: 2px;
             }
             .api-error{
@@ -78,6 +81,7 @@
                 font-size: $error-font-size;
                 width: 150px;
                 padding: 4px;
+                box-sizing: border-box;
                 border-radius: 4px;
                 box-shadow: 0 0 5px rgb(39, 39, 39);
                 margin-right: 10px;
@@ -88,6 +92,7 @@
                 font-size: $error-font-size;
                 width: 150px;
                 padding: 4px;
+                box-sizing: border-box;
                 border-radius: 4px;
                 box-shadow: 0 0 5px rgb(39, 39, 39);
                 margin-right: 10px;

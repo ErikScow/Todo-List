@@ -73,6 +73,7 @@
             display:block;
             background: rgb(224, 224, 224);
             border-radius: 5px;
+            margin-bottom: 2px;
         }
         textarea{
             resize: none;
@@ -106,9 +107,8 @@
         .form-error{
             color:$error-color;
             background-color: #444;
-            position:absolute;
-            top: 121px;
             padding: 4px;
+            box-sizing:border-box;
             border-radius: 4px;
             box-shadow: 0 0 5px rgb(39, 39, 39);
             font-size:$error-font-size

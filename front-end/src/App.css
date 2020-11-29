@@ -53,6 +53,10 @@ table {
   border-spacing: 0;
 }
 
+html {
+  box-sizing: border-box;
+}
+
 .top-nav {
   background: #444444;
   position: fixed;
@@ -95,6 +99,7 @@ body {
   background: #242424;
   font-family: sans-serif;
   text-shadow: 1px 1px #272727;
+  box-sizing: border-box;
 }
 
 .tabs {
@@ -332,6 +337,7 @@ body {
   display: block;
   background: #e0e0e0;
   border-radius: 5px;
+  margin-bottom: 2px;
 }
 .modal form textarea {
   resize: none;
@@ -364,9 +370,8 @@ body {
 .modal form .form-error {
   color: #ff3333;
   background-color: #444;
-  position: absolute;
-  top: 121px;
   padding: 4px;
+  box-sizing: border-box;
   border-radius: 4px;
   box-shadow: 0 0 5px #272727;
   font-size: 15px;
@@ -451,15 +456,18 @@ body {
 }
 .front-content-container .front-modal form label {
   margin: 0 auto;
+  width: 150px;
   font-size: 18px;
   padding-bottom: 25px;
 }
 .front-content-container .front-modal form input, .front-content-container .front-modal form textarea {
   font-family: Arial, Helvetica, sans-serif;
   display: block;
+  width: 150px;
   background: #e0e0e0;
   border-radius: 5px;
   border: none;
+  padding: 0;
   margin-bottom: 2px;
 }
 .front-content-container .front-modal form .api-error {
@@ -479,6 +487,7 @@ body {
   font-size: 15px;
   width: 150px;
   padding: 4px;
+  box-sizing: border-box;
   border-radius: 4px;
   box-shadow: 0 0 5px #272727;
   margin-right: 10px;
@@ -489,6 +498,7 @@ body {
   font-size: 15px;
   width: 150px;
   padding: 4px;
+  box-sizing: border-box;
   border-radius: 4px;
   box-shadow: 0 0 5px #272727;
   margin-right: 10px;
