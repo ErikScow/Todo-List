@@ -562,7 +562,7 @@ body {
     translate: transform 0.2s;
   }
   .tabs .tabs-link:hover {
-    color: lightslategrey;
+    color: inherit;
   }
   .tabs .current {
     transform: scale(1.05);
@@ -607,7 +607,7 @@ body {
   }
   .top-nav button:hover {
     cursor: pointer;
-    color: lightslategrey;
+    color: inherit;
   }
   .top-nav .links-container {
     display: flex;
@@ -690,6 +690,9 @@ body {
   }
   .modal .top-row {
     width: 360px;
+  }
+  .modal .top-row button:hover {
+    background: #444;
   }
 }
 @media (max-width: 660px) {

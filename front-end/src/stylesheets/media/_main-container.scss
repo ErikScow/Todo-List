@@ -33,7 +33,7 @@
             translate: transform 0.2s;
         }
         .tabs-link:hover{
-            color:$button-hover;
+            color:inherit;
         }
         .current{
             transform: scale(1.05);

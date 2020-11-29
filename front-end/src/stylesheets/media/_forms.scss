@@ -4,7 +4,11 @@
         margin-left: -180px;
         .top-row{
             width: 360px;
+            button:hover{
+                background: #444;
+            }
         }
+        
     }
 }
 @media(max-width:660px){

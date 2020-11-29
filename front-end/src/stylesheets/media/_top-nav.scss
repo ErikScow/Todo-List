@@ -25,7 +25,7 @@
     }
     button:hover{
         cursor: pointer;
-        color: $button-hover;
+        color: inherit;
     }
     .links-container{
         @include flex(row nowrap, space-between);
