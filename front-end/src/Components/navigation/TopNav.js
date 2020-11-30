@@ -30,7 +30,7 @@ const TopNav = () => {
     return(
         <div className='top-nav'>
             <h1>My Lists</h1>
-            <button onClick={logOut}>Log Out</button>
+            <button className='log-out-button' onClick={logOut}>Log Out</button>
         </div>
     )
     

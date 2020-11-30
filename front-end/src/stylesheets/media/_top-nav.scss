@@ -83,6 +83,15 @@
             cursor: pointer;
             color: $button-hover;
         }
+        .log-out-button{
+            position: fixed;
+            right: 20px;
+            top: 13px;
+            width: auto;
+            background: #444;
+            padding: 0;
+            border: none;
+        }
         .links-container{
             @include flex(column nowrap, inline);
             align-items: center;

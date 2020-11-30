@@ -1,0 +1,105 @@
+@media(max-width: 670px){
+    .task{
+    
+        padding:7px;
+        border: 1px solid black;
+        border-radius: 10px;
+        margin: 6px;
+        box-shadow:0 0 20px rgb(39, 39, 39) ;
+    }
+    .sub-task{
+        padding: 6px;
+        border: 1px solid black;
+        border-radius: 10px;
+        margin: 6px;
+        box-shadow:0 0 5px rgb(61, 61, 61) ;
+    }
+    
+    .high-priority{
+        background: rgb(189, 45, 45);
+    }
+    
+    .mid-priority{
+        background: rgb(71, 168, 71);
+    }
+    
+    .low-priority{
+        background: rgb(62, 145, 197);
+    }
+    
+    .completed-priority{
+        background: rgb(126, 126, 126);
+    }
+    
+    .task-button{
+        color: black;
+        font-size: 10px;
+        background: rgb(212, 212, 212);
+        padding: 4px 7px;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+    .task-button:hover{
+        cursor:pointer;
+        color:$button-hover
+    }
+    
+    .status-button{
+        background: none;
+        font-size: 0;
+        width: 15px;
+        height: 15px;
+        border: 1px solid black;
+        border-radius: 50%;
+        box-shadow: 1px 1px rgb(39, 39, 39);
+    
+        &.complete{
+            background: rgba(0,0,0,0.4)
+        }
+    }
+    
+    .task-data{
+        @include flex(column nowrap, inline);
+        padding: 0 4px 4px 4px;
+        .top-row{
+            @include flex(row nowrap, space-between);
+            .main-info{
+                @include flex(row nowrap, space-between);
+                align-items: center;
+                h3{
+                    font-size: 18px;
+                    padding: 0px 0 0px 4px;
+                }
+                .discarded-h3{
+                    padding-left: 0;
+                }
+                h2{
+                    font-size: 14px;
+                    padding: 0px 0 0px 4px;
+                }
+            }
+            .time-frames{
+                font-size: 10px;
+            }
+        }
+        .description{
+            font-size: 10px;
+            padding: 15px 0;
+    
+        }
+        .bottom-row{
+            @include flex(row nowrap, space-between);
+            .secondary-buttons{
+                @include flex(row nowrap, space-between);
+                width: 120px;
+            }
+        }
+        
+    }
+    
+    
+    .hide-completed-button{
+        margin-left: 10px;
+    }
+}
+
