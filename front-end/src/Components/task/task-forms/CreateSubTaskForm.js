@@ -99,7 +99,7 @@ const CreateSubTaskForm = (props) => {
                 <div className = 'backdrop' onClick={props.toggleHidden}></div>
                 <div className='modal'>
                     <div className='top-row'>
-                        <h3>Create A New Sub Task</h3>
+                        <h3>Add A Sub Task</h3>
                         <button type='button' onClick={props.toggleHidden}><span>X</span></button>
                     </div>
                     

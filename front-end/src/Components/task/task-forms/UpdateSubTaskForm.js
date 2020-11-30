@@ -117,7 +117,7 @@ const UpdateSubTaskForm = (props) => {
                 <div className = 'backdrop' onClick={props.toggleHiddenEdit}></div>
                 <div className='modal'>
                     <div className='top-row'>
-                        <h3>Create A New Task</h3>
+                        <h3>Edit Sub Task</h3>
                         <button type='button' onClick={props.toggleHiddenEdit}><span>X</span></button>
                     </div>
             <form onSubmit={submitHandler}>
