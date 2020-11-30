@@ -112,6 +112,7 @@ const UpdateTaskForm = (props) => {
                 <label>
                     New Task Name:
                     <input
+                        className = 'text-input'
                         type = 'text'
                         name = 'task_name'
                         onChange = {changeHandler}
@@ -120,6 +121,7 @@ const UpdateTaskForm = (props) => {
                 <label>
                     New Description:
                     <textarea
+                        className = 'text-input'
                         type = 'text'
                         name = 'task_description'
                         onChange = {changeHandler}
@@ -128,6 +130,7 @@ const UpdateTaskForm = (props) => {
                 <label>
                     New Start:
                     <input
+                        className = 'text-input'
                         type = 'text'
                         name = 'created'
                         onChange = {changeHandler}
@@ -136,6 +139,7 @@ const UpdateTaskForm = (props) => {
                 <label>
                     New Finish:
                     <input
+                        className = 'text-input'
                         type = 'text'
                         name = 'complete_by'
                         onChange = {changeHandler}

@@ -134,6 +134,7 @@ const UpdateSubTask2Form = (props) => {
                 <label>
                     New Sub Task Name:
                     <input
+                        className = 'text-input'
                         type = 'text'
                         name = 'task_name'
                         onChange = {changeHandler}
@@ -142,6 +143,7 @@ const UpdateSubTask2Form = (props) => {
                 <label>
                     New Description:
                     <textarea
+                        className = 'text-input'
                         type = 'text'
                         name = 'task_description'
                         onChange = {changeHandler}
@@ -150,6 +152,7 @@ const UpdateSubTask2Form = (props) => {
                 <label>
                     New Start:
                     <input
+                        className = 'text-input'
                         type = 'text'
                         name = 'created'
                         onChange = {changeHandler}
@@ -158,6 +161,7 @@ const UpdateSubTask2Form = (props) => {
                 <label>
                     New Finish:
                     <input
+                        className = 'text-input'
                         type = 'text'
                         name = 'complete_by'
                         onChange = {changeHandler}
